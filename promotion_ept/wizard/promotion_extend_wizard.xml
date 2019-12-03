@@ -1,0 +1,31 @@
+<odoo>
+	<record id="promotion_extend_wizard" model="ir.ui.view">
+            <field name="name">promotion.extend.wizard</field>
+            <field name="model">promotion.extend</field>
+            <field name="arch" type="xml">
+                <form string="Promotion Extend">
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="extend_promotion" 
+                            string="Done" type="object" 
+                            class="btn-primary"/>
+                        <button string="Cancel"
+                            class="btn-default" 
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_promotion_extend_wizard" model="ir.actions.act_window">
+            <field name="name">Promotion Extend</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">promotion.extend</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="promotion_extend_wizard"></field>
+            <field name="target">new</field>
+        </record>
+</odoo>

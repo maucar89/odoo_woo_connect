@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+    <record id="credit_limit_config" model="res.groups">
+        <field name="name">Config Credit Limit On partners</field>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+</data>
+</openerp>

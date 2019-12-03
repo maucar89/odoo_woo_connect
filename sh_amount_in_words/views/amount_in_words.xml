@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	 	<record id="sh_res_company" model="ir.ui.view">
+			<field name="name">res.currency.amount.in.words.view</field>
+			<field name="model">res.currency</field>
+			<field name="inherit_id" ref="base.view_currency_form"/>
+			<field name="arch" type="xml">			
+				<field name="rate" position="after">
+					<field name="currency_unit_label"/>	
+					<field name="currency_subunit_label"/>	
+					<field name="amount_separator"/>	
+					<field name="close_financial_text"/>	
+				</field>
+			</field>
+		</record>
+	
+	   	<record id="sh_purchase_order_amount_in_words_view" model="ir.ui.view">
+		     <field name="name">purchase.order.amount.in.words.view</field>
+		     <field name="model">purchase.order</field>
+		     <field name="inherit_id" ref="purchase.purchase_order_form"/>
+		     <field name="arch" type="xml">
+		        <xpath expr="//field[@name='notes']" position="before">
+		            <group>
+	 	                <field name="amount_in_words" />
+	 	                <field name="print_to_report" /> 	                
+		            </group>
+		     	</xpath>
+		     </field>
+		</record>
+	
+	 	<record id="sh_sale_order_amount_in_words_view" model="ir.ui.view">
+		     <field name="name">sale.order.amount.in.words.view</field>
+		     <field name="model">sale.order</field>
+		     <field name="inherit_id" ref="sale.view_order_form"/>
+		     <field name="arch" type="xml">
+		        <xpath expr="//group[@name='sale_total']" position="after">
+		            <group>
+	 	                <field name="amount_in_words" />
+	 	                <field name="print_to_report" />	                
+		            </group>
+		     	</xpath>
+		     </field>
+		</record>
+ 		
+		<record id="sh_sale_invoice_amount_in_words_arabic_view" model="ir.ui.view">
+		     <field name="name">sale.invoice.amount.in.words.view</field>
+		     <field name="model">account.invoice</field>
+		     <field name="inherit_id" ref="account.invoice_form"/>
+		     <field name="arch" type="xml">
+		        <xpath expr="//field[@name='comment']" position="before">
+		            <group>
+		                <field name="amount_in_words" />
+	 	                <field name="print_to_report" />               
+		            </group>
+		     	</xpath>
+		     </field>
+		</record>
+		<record id="sh_purchase_invoice_amount_in_words_arabic_view" model="ir.ui.view">
+		     <field name="name">purchase.invoice.amount.in.words.view</field>
+		     <field name="model">account.invoice</field>
+		     <field name="inherit_id" ref="account.invoice_supplier_form"/>
+		     <field name="arch" type="xml">
+		        <xpath expr="//field[@name='comment']" position="before">
+		            <group>
+		                <field name="amount_in_words" />
+	 	                <field name="print_to_report" /> 	                
+		            </group>
+		     	</xpath>
+		     </field>
+		</record>
+ 
+ 	</data>
+</odoo>

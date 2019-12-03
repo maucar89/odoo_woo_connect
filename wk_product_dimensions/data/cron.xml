@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+    <!-- See License URL : <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+    <record id="fetch_currency_rate" forcecreate='True' model="ir.cron">
+      <field name="name">Fetch - Currency Rate From API</field>
+      <field eval="False" name="active"/>
+      <field name="user_id" ref="base.user_root"/>
+      <field name="interval_number">12</field>
+      <field name="interval_type">hours</field>
+      <field name="numbercall">-1</field>
+      <field eval="'currency.rate.api'" name="model"/>
+      <field eval="'_cron_fetch_currency_rate'" name="function"/>
+      <field eval="'()'" name="args"/>
+    </record>
+
+    <record id="create_currency_rate" forcecreate='True' model="ir.cron">
+      <field name="name">Create - Currency Rate In Odoo</field>
+      <field eval="False" name="active"/>
+      <field name="user_id" ref="base.user_root"/>
+      <field name="interval_number">12</field>
+      <field name="interval_type">hours</field>
+      <field name="numbercall">-1</field>
+      <field eval="'currency.rate.api'" name="model"/>
+      <field eval="'_cron_create_currency_rate'" name="function"/>
+      <field eval="'()'" name="args"/>
+    </record>
+
+
+  </data>
+</openerp>

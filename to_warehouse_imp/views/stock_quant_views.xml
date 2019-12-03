@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="quant_search_view" model="ir.ui.view">
+			<field name="name">stock.quant.search</field>
+			<field name="model">stock.quant</field>
+			<field name="inherit_id" ref="stock.quant_search_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='owner_id']" position="after">
+					<filter string="Today" name="today" domain="[('in_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('in_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" help="Orders processed Today"/>
+					<filter string="Last 7 Days" name="last_seven_days"
+						domain="[('in_date','&gt;=', ((context_today()-datetime.timedelta(days=7)).strftime('%Y-%m-%d'))), ('in_date','&lt;=',((context_today().strftime('%Y-%m-%d'))))]" />
+					<filter string="Last 30 Days" name="last_thirty_days"
+						domain="[('in_date','&gt;=', ((context_today()-datetime.timedelta(days=30)).strftime('%Y-%m-%d'))), ('in_date','&lt;=',((context_today().strftime('%Y-%m-%d'))))]" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

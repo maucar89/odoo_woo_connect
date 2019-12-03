@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_daily_invoice">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="o">
+                <t t-call="report.external_layout">
+                <div class="page">
+                      <h3 class="text-center text-primary"><center>Daily Invoice Report</center></h3>
+                            <div class="col-xs-12">
+                                    <table class="table" style="font-size:18px;font-weight: bold;">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    From Date
+                                                </th>
+                                                <th>
+                                                    To Date
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span t-field="o.from_date"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="o.to_date"/>
+                                                </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-xs-12">
+                                <div style="font-size:14px;font-weight: bold;">
+                                    <t t-if="o.customer_ids">
+                                        Customers: <span t-esc="', '.join(map(lambda x: (x.name), o.customer_ids))"/>
+                                    </t>
+                                </div>
+                                <br/>
+                                <div class="table" style="font-size:14px;font-weight: bold;">
+                                    <t t-if="o.sale_team_ids">
+                                        Teams: <span t-esc="', '.join(map(lambda x: (x.name), o.sale_team_ids))"/>
+                                    </t>
+                                </div>
+                            </div>
+                                <table class="table" style="font-size:12px;">
+                                     <thead>
+                                         <tr>
+                                             <th><strong>Team</strong></th>
+                                             <th style="text-align:right">Total</th>
+                                          </tr>
+                                      </thead>
+                                      <t t-set="total" t-value="0"/>
+                                      <tbody>
+                                        <tr t-foreach="team_summary(o)" t-as="summary">
+                                            <td>
+                                                <span t-esc="summary"/>
+                                            </td>
+                                           <td style="text-align:right">
+                                                 <span t-esc="summary_value"
+                                                 t-esc-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                                <t t-set="total" t-value="total + summary_value"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Total</strong></td>
+                                            <td style="text-align:right">
+                                                <strong>
+                                                    <span t-esc="total" 
+                                                    t-esc-options='{"widget": "monetary", 
+                                                    "display_currency": "res_company.currency_id"}'/>
+                                               </strong>
+                                            </td>
+                                        </tr>
+                                      </tbody>
+                                  </table>
+                                <t t-foreach="query(o)" t-as="team">
+                                    <t t-set="c_total_amt" t-value="0"/>
+                                    <t t-set="c_tax" t-value="0"/>
+                                    <t t-set="c_amt" t-value="0"/>
+                                     <h3><strong>Team: <span t-esc="team"></span></strong></h3>
+                                     <t t-foreach="team_value" t-as="partner">
+                                          <t t-foreach="partner_value" t-as="partner1">
+	                                                <t t-set="total_amt" t-value="0"/>
+	                                                <t t-set="tax" t-value="0"/>
+	                                                <t t-set="amt" t-value="0"/>
+                                                    <table class="table" style="font-size:12px;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Number</th>
+                                                            <th>Customer</th>
+                                                            <th style="text-align:right">Product Amount</th>
+                                                            <th style="text-align:right">Tax Amount</th>
+                                                            <th style="text-align:right">Total Invoice</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr t-foreach="partner1_value" t-as="res">
+                                                        <td>
+                                                            <span t-esc="res['date']"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="res['number']"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="res['name']"/>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <span t-esc="(res['product_amt'])"
+                                                            t-esc-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                                            <t t-set="total_amt" t-value="total_amt + res['product_amt']"/>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <span t-esc="res['tax_amt']"
+                                                            t-esc-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                                            <t t-set="tax" t-value="tax + res['tax_amt']"/>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <span t-esc="res['inv_total']"
+                                                            t-esc-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                                            <t t-set="amt" t-value="amt + res['inv_total']"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Total Of <span t-esc="partner1"/></strong></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="text-align:right">
+                                                            <strong><span t-esc="total_amt" 
+                                                            t-esc-options='{"widget": "monetary", 
+                                                            "display_currency": "res_company.currency_id"}'/>
+                                                            </strong>
+                                                            <t t-set="c_total_amt" t-value="c_total_amt + total_amt"/>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <strong><span t-esc="tax" 
+                                                            t-esc-options='{"widget": "monetary", 
+                                                            "display_currency": "res_company.currency_id"}'/>
+                                                            </strong>
+                                                            <t t-set="c_tax" t-value="c_tax + tax"/>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <strong><span t-esc="amt" 
+                                                            t-esc-options='{"widget": "monetary", 
+                                                            "display_currency": "res_company.currency_id"}'/>
+                                                            </strong>
+                                                            <t t-set="c_amt" t-value="c_amt + amt"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                    </t>
+                                   <table class="table" style="font-size:16px;">
+                                   <thead>
+                                        <th>Team</th>
+                                        <th style="text-align:right">Product Amount</th>
+                                        <th style="text-align:right">Tax Amount</th>
+                                        <th style="text-align:right">Total Invoice</th>
+                                   </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Of <span t-esc="team"/></strong></td>
+                                            <td style="text-align:right">
+                                                <strong><span t-esc="c_total_amt" 
+                                                t-esc-options='{"widget": "monetary", 
+                                                "display_currency": "res_company.currency_id"}'/>
+                                                </strong>
+                                            </td>
+                                            <td style="text-align:right">
+                                                <strong><span t-esc="c_tax" 
+                                                t-esc-options='{"widget": "monetary", 
+                                                "display_currency": "res_company.currency_id"}'/>
+                                                </strong>
+                                            </td>
+                                             <td style="text-align:right">
+                                                <strong><span t-esc="c_amt" 
+                                                t-esc-options='{"widget": "monetary", 
+                                                "display_currency": "res_company.currency_id"}'/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

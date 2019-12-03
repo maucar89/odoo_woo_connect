@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+        <!-- Sales Report Excel -->
+        <report
+            id="report_sales_export_xlsx"
+            model="sale.excel.export.header"
+            string="Reporte Ventas Excel"
+            report_type="xlsx"
+            name="sale_report_xlsx.sale_report_excel_export.xlsx"
+            file="sale_report_xlsx.sale_report_excel_export.xlsx"
+            attachment_use="False"/>
+
+    </data>
+</odoo>

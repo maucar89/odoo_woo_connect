@@ -1,0 +1,164 @@
+<odoo>
+	<data noupdate="1">
+		<record id="promotion_1" model="promotion.method">
+	    	<field name="name">get 50% off</field>
+	        <field name="applied_on">global</field>
+	        <field name="coupon_code">YoZnhV2</field>
+	        <field name="min_order_quantity">1</field>
+	        <field name="min_order_amount">1000.00</field>
+	        <field name="compute_price">percentage</field>
+	        <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	        <field name="max_limit_per_user">1</field>
+	        <field name="percent_price">50</field>
+	        <field name="active">True</field>
+	        <field name="bar_code_sequence">000000000000</field>
+	        <field name="is_for_specific_customers">True</field>
+	        <field name="customer_ids" eval="[(6,0,[ref('base.res_partner_2'),ref('base.res_partner_3')])]"/>
+	    </record>
+	    
+	    <record id="promotion_2" model="promotion.method">
+	    	<field name="name">Buy 3 get $500 off</field>
+	        <field name="applied_on">global</field>
+	        <field name="coupon_code">qm0sxMG</field>
+	        <field name="min_order_quantity">3</field>
+	        <field name="date_start">10/01/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	        <field name="min_order_amount">1000.00</field>
+	        <field name="compute_price">fixed</field>
+	        <field name="fixed_price">500</field>
+	        <field name="active">True</field>
+	        <field name="max_limit_per_user">1</field>
+	         <field name="bar_code_sequence">000000000001</field>
+	    </record>
+	    
+	    <record id="promotion_3" model="promotion.method">
+	        <field name="name">get 50% + 10% Extra</field>
+	        <field name="applied_on">global</field>
+	        <field name="coupon_code">2QHiZxE</field>
+	        <field name="min_order_quantity">1</field>
+	        <field name="min_order_amount">1000</field>
+	        <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	        <field name="max_promotion_amount">555</field>
+	        <field name="compute_price">other_promotionlist</field>
+	        <field name="base_promotionlist_id" ref="promotion_ept.promotion_1"/>
+	        <field name="price_discount">10</field>
+	        <field name="active">True</field>
+	       <field name="bar_code_sequence">0000000000002</field>
+	   </record>
+	    
+	    <record id="promotion_4" model="promotion.method">
+	        <field name="name">get 20% in decoration items</field>
+	        <field name="applied_on">product_category</field>
+	        <field name="categ_ids" eval="[(6,0,[ref('product.product_category_1')])]"/>
+	        <field name="coupon_code">H0NEJv8</field>
+	        <field name="min_order_quantity">1</field>
+	        <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	        <field name="min_order_amount">500</field>
+	        <field name="compute_price">percentage</field>
+	        <field name="percent_price">20</field>
+	        <field name="active">True</field>
+	       <field name="bar_code_sequence">000000000003</field>
+	    </record>
+	    
+	    <record id="promotion_5" model="promotion.method">
+	         <field name="name">get $500 off for prime members</field>
+	         <field name="applied_on">global</field>
+	         <field name="coupon_code">J2Wxk37</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="min_order_amount">1000</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="compute_price">fixed</field>
+	         <field name="fixed_price">500</field>
+	         <field name="active">True</field>
+	         <field name="is_for_specific_customers">True</field>
+	         <field name="customer_ids" eval="[(6,0,[ref('base.res_partner_2')])]"/>
+	         <field name="bar_code_sequence">000000000004</field>
+	    </record>
+	    
+	    <record id="promotion_6" model="promotion.method">
+	         <field name="name">buy computer and get 35% off</field>
+	         <field name="applied_on">product</field>
+	         <field name="product_tmpl_ids" eval="[(6,0,[ref('product.consu_delivery_03')])]"/>
+	         <field name="coupon_code">4M3Bjl5</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="compute_price">percentage</field>
+	         <field name="percent_price">35</field>
+	         <field name="active">True</field>
+	         <field name="bar_code_sequence">000000000005</field>
+	    </record>
+	    <record id="range_based_rule1" model="promotion.method.rule.based">
+	    	<field name="from_start">1</field>
+	    	<field name="to_end">2</field>
+	    	<field name="price_based_on">percentage</field>
+	    	<field name="based_on_percent_price">10</field>
+	    </record>
+	    
+	    <record id="range_based_rule2" model="promotion.method.rule.based">
+	    	<field name="from_start">3</field>
+	    	<field name="to_end">-1</field>
+	    	<field name="price_based_on">percentage</field>
+	    	<field name="based_on_percent_price">30</field>
+	    </record>
+	    <record id="promotion_7" model="promotion.method">
+	         <field name="name">Buy 1 get 10% Off Buy 3 get 30% Off</field>
+	         <field name="applied_on">product_variant</field>
+	         <field name="product_ids" eval="[(6,0,[ref('product.product_product_7')])]"/>
+	         <field name="coupon_code">OEIOL0g</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="compute_price">range</field>
+	         <field name="range_based_on">qty</field>
+	         <field name="rule_based_ids" eval="[(6,0,[ref('promotion_ept.range_based_rule1'),ref('promotion_ept.range_based_rule2')])]"/>
+	         <field name="active">True</field>
+	        <field name="bar_code_sequence">000000000006</field>
+	    </record>
+	    
+	    <record id="promotion_8" model="promotion.method">
+	         <field name="name">Rs. 300 Off on Minimum Purchase of Rs. 999</field>
+	         <field name="applied_on">global</field>
+	         <field name="coupon_code">oUO6PF4</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="min_order_amount">999</field>
+	         <field name="compute_price">fixed</field>
+	         <field name="fixed_price">300</field>
+	         <field name="active">True</field>
+	         <field name="bar_code_sequence">000000000007</field>
+	    </record>
+	    
+	    <record id="promotion_9" model="promotion.method">
+	         <field name="name">Deal of the END day of Month get 25% Off in every Items</field>
+	         <field name="applied_on">global</field>
+	         <field name="coupon_code">hVEW633</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	         <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="compute_price">percentage</field>
+	         <field name="percent_price">25</field>
+	         <field name="active">True</field>
+	        <field name="bar_code_sequence">000000000008</field>
+	    </record>
+	    
+	    <record id="promotion_10" model="promotion.method">
+	         <field name="name">Diwali Offer get 60% off in every Item</field>
+	         <field name="applied_on">global</field>
+	         <field name="coupon_code">otgTpeH</field>
+	         <field name="min_order_quantity">1</field>
+	         <field name="date_start">09/16/2017 00:00:00</field>
+	        <field name="date_end">10/01/2017 00:00:00</field>
+	         <field name="compute_price">percentage</field>
+	         <field name="percent_price">60</field>
+	         <field name="active">True</field>
+	         <field name="bar_code_sequence">000000000009</field>
+	    </record>
+	    
+    </data>
+</odoo>

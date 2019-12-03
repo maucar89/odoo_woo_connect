@@ -1,0 +1,120 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_check
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-24 06:55+0000\n"
+"PO-Revision-Date: 2017-07-24 06:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_check
+#: model:ir.model,name:pos_check.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "Ligne de relevé bancaire"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:43
+#: code:addons/pos_check/static/src/xml/pos_check.xml:44
+#, python-format
+msgid "Bank account"
+msgstr "N° de compte"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:32
+#, python-format
+msgid "Bank name"
+msgstr "Banque"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:58
+#, python-format
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: pos_check
+#: model:ir.model.fields,field_description:pos_check.field_account_bank_statement_line_check_bank_id
+#: model:ir.model.fields,field_description:pos_check.field_pos_make_payment_check_bank_id
+msgid "Check bank"
+msgstr "Banque"
+
+#. module: pos_check
+#: model:ir.model.fields,field_description:pos_check.field_account_bank_statement_line_check_bank_acc
+#: model:ir.model.fields,field_description:pos_check.field_pos_make_payment_check_bank_acc
+msgid "Check bank account"
+msgstr "N° de compte"
+
+#. module: pos_check
+#: model:ir.model.fields,field_description:pos_check.field_account_bank_statement_line_check_info_required
+#: model:ir.model.fields,field_description:pos_check.field_account_journal_check_info_required
+#: model:ir.model.fields,field_description:pos_check.field_pos_make_payment_check_info_required
+msgid "Check info required?"
+msgstr "Saisir les détails des chèques?"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:47
+#: code:addons/pos_check/static/src/xml/pos_check.xml:48
+#: model:ir.model.fields,field_description:pos_check.field_account_bank_statement_line_check_number
+#: model:ir.model.fields,field_description:pos_check.field_pos_make_payment_check_number
+#, python-format
+msgid "Check number"
+msgstr "N° de chèque"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:51
+#: code:addons/pos_check/static/src/xml/pos_check.xml:52
+#: model:ir.model.fields,field_description:pos_check.field_account_bank_statement_line_check_owner
+#: model:ir.model.fields,field_description:pos_check.field_pos_make_payment_check_owner
+#, python-format
+msgid "Check owner"
+msgstr "Propriétaire"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:9
+#: code:addons/pos_check/static/src/xml/pos_check.xml:21
+#, python-format
+msgid "Check:"
+msgstr "Chèque:"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:55
+#, python-format
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: pos_check
+#: model:ir.model,name:pos_check.model_account_journal
+msgid "Journal"
+msgstr "Journal"
+
+#. module: pos_check
+#. openerp-web
+#: code:addons/pos_check/static/src/xml/pos_check.xml:30
+#, python-format
+msgid "Please enter check info"
+msgstr "Veuillez saisir les détails du chèque"
+
+#. module: pos_check
+#: model:ir.model,name:pos_check.model_pos_order
+msgid "Point of Sale"
+msgstr "Point de vente"
+
+#. module: pos_check
+#: model:ir.model,name:pos_check.model_pos_make_payment
+msgid "Point of Sale Payment"
+msgstr "Paiement du ticket"
+

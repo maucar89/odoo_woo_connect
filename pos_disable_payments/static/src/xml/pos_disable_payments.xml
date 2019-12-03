@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <templates id="pos_orders_reprint_template" inherit_id="point_of_sale.template" xml:space="preserve">
+    <t t-extend="NumpadWidget">
+        <t t-jquery="div.numpad" t-operation="replace">
+            <div class="numpad">
+                <button class="input-button number-char">1</button>
+                <button class="input-button number-char">2</button>
+                <button class="input-button number-char">3</button>
+                <button class="input-button number-char">4</button>
+                <br/>
+                <button class="input-button number-char">5</button>
+                <button class="input-button number-char">6</button>
+                <button class="input-button number-char">7</button>
+                <button class="input-button number-char">8</button>
+                <br/>
+                <button class="input-button number-char">9</button>
+                <button class="input-button numpad-minus" >+/-</button>
+                <button class="input-button number-char">0</button>
+                <button class="input-button number-char">.</button>
+                <br/>
+                <button class="mode-button qty" data-mode='quantity'>Qty</button>
+                <button class="mode-button disc" data-mode='discount'>Disc</button>
+                <button class="mode-button price" data-mode='price'>Price</button>
+                <button class="input-button numpad-backspace">
+                    <img style="pointer-events: none;" src="/point_of_sale/static/src/img/backspace.png" width="24" height="21" alt="Backspace"/>
+                </button>
+            </div>
+        </t>
+    </t>
+
+    </templates>
+
+

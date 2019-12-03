@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="res_partner_addon_form" model="ir.ui.view">
+            <field name="name">res_partner_addon_form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <br/>
+                    <label for="index" string="ID: "/>
+                    <field name="index" attrs="{'invisible':[('id','=',False)]}"/>
+                    <field name="id" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <record id="res_partner_addon_tree" model="ir.ui.view">
+            <field name="name">res_partner_addon_tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="after">
+                    <field name="index" attrs="{'invisible':[('id','=',False)]}"/>
+                    <field name="id" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <record id="res_partner_addon_kanban" model="ir.ui.view">
+            <field name="name">res_partner_addon_kanban</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="index"/>
+                </field>
+                <xpath expr="//templates//div[@class='oe_kanban_details']/strong[@class='oe_partner_heading']" position="after">
+                    <p style="margin: 0;">
+                        <strong>ID: </strong>
+                        <field name="index"/>
+                    </p>
+                </xpath>
+            </field>
+        </record>
+        <record id="res_partner_addon_search" model="ir.ui.view">
+            <field name="name">res_partner_addon_search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="index" string="Index ID" filter_domain="[('index','ilike', self)]"/>
+                </field>
+                <group name="group_by" position="inside">
+                   <filter string="Index" context="{'group_by': 'index_char'}"/>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>

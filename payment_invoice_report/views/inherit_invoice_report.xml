@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_inherit_payment" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@class='page']/p[1]" position="before">
+            <t t-if='o.payment_move_line_ids'>
+                <span style="font-size:35px">Payment Information</span><br/>
+                <table class="table table-condensed" style="width:50%;" >
+                    <thead>
+                        <th>Date</th>
+                        <th>Ref</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                    </thead>
+                    <tr t-foreach="o.payment_move_line_ids" t-as="payment">
+                        <td><span t-esc="payment.date"/></td>
+                        <td><span t-esc="payment.move_id.name"/></td>
+                        <td><span t-esc="payment.journal_id.type"/></td>
+                        <t t-if="payment.credit"><td><span t-esc="payment.credit"/></td></t>
+                        <t t-if="payment.debit"><td><span t-esc="payment.debit"/></td></t>
+                    </tr>
+                </table>
+            </t>
+        </xpath>
+    </template>
+</odoo>

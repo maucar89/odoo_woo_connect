@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * partner_set_fiscal_position
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-29 09:33+0000\n"
+"PO-Revision-Date: 2017-11-29 09:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_set_fiscal_position
+#: model:ir.ui.view,arch_db:partner_set_fiscal_position.view_res_partner_form_inherit
+msgid "Country"
+msgstr "Land"
+
+#. module: partner_set_fiscal_position
+#: model:ir.model,name:partner_set_fiscal_position.model_res_partner
+msgid "Partner"
+msgstr "Relatie"
+
+#. module: partner_set_fiscal_position
+#: code:addons/partner_set_fiscal_position/model/partner.py:14
+#, python-format
+msgid "Vat is required. Please enter the valid vat number."
+msgstr "Vat is required. Please enter the valid vat number."

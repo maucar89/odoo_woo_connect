@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+	<data>
+		<template id="snippet_slider_thumb" inherit_id="website.snippets">
+			<xpath expr="//div[@id='snippet_structure']" position="inside">
+				<div class="o_panel_body">
+					<t t-snippet="mercurio.s_bannerr" t-thumbnail="/mercurio/static/description/iconn.png"/>
+				</div>
+			</xpath>
+		</template>
+	</data>
+</openerp>

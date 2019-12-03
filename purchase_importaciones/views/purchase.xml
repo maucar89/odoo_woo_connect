@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+
+<record id="purchase_order_form" model="ir.ui.view">
+    <field name="name">commercial.partner.purchase.order.form</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+
+        <field name="date_order" position="after">
+            <field name="importaciones_tipo" />
+        </field>
+        <field name="partner_ref" position="after">
+            <field name="importaciones_nro_importacion"  attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}" />
+            <field name="importaciones_referencia" string="Ref. Importación" attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}" />
+            <field name="importaciones_tipo_pago" attrs="{'invisible': [('importaciones_tipo', '=', 'L')]}" />
+        </field>
+
+        <page name="Importaciones" position="inside">
+            <group name="Importaciones" string="Datos">
+                <group>
+                    <field name="importaciones_nrocontenedor"/>
+                    <field name="importaciones_buque" />
+                    <field name="importaciones_apl_seguro" />
+                    <field name="importaciones_peso_bruto" />
+                    <field name="importaciones_volumen" />
+                </group>
+                <group>
+                    <field name="importaciones_fecha_embarque" />
+                    <field name="importaciones_fecha_llegada_puerto"/>
+                    <field name="importaciones_fecha_salida_puerto"/>
+                    <field name="importaciones_fecha_llegada_aduana"/>
+                    <field name="importaciones_fecha_almacen"/>
+                    <field name="importaciones_dui"/>
+                    <field name="importaciones_canal"/>
+                    <field name="importaciones_fecha_factura_bolivia"/>
+                    <field name="importaciones_fecha_factura_vencimiento"/>
+                    <field name="importaciones_estado"/>
+                    <field name="importaciones_forwarder"/>
+                </group>
+            </group>
+
+            <field name="importaciones_datos_adicionales" mode="tree">
+                    <tree string="Datos Importacion" editable="bottom">
+                      <field name="numero_pfm"/>
+                      <field name="concepto"/>
+                      <field name="fecha_factura_proveedor"/>
+                      <field name="numero_factura"/>
+                      <field name="monto" widget="monetary"/>
+                      <field name="seguro" widget="monetary"/>
+                      <field name="credito_vencimiento"/>
+                      <field name="fecha_vencimiento_pago" widget="date" />
+                      <field name="saldo" widget="monetary"/>
+                      <field name="pagado" widget="monetary"/>
+                      <field name="estado"/>
+                    </tree>
+                </field>
+        </page>
+        <page name="Costos" position="inside">
+
+                  <field name="importaciones_detalle_costos" mode="tree">
+                      <tree string="Detalle Costos" editable="bottom">
+                      <field name="nombre_costo_importacion"/>
+                      <field name="monto_costo_importacion_bolivianos" widget="monetary"/>
+                      <field name="monto_costo_importacion" widget="monetary"/>
+                      <field name="factura_costo_importacion"/>
+                      <field name="credito_fiscal_costo_impotacion" widget="monetary"/>
+                      <field name="gastos_netos_costo_impotacion" widget="monetary"/>
+                      <field name="detalle_costo_importacion" widget="monetary"/>
+                      <field name="proveedor_costo"/>
+                      <field name="fecha_costo" widget="date"/>
+                      <field name="pagado" widget="monetary"/>
+                      <field name="saldo" widget="monetary"/>
+                      <field name="estado"/>
+                      </tree>
+                  </field>
+
+        </page>
+
+    </field>
+</record>
+
+</odoo>

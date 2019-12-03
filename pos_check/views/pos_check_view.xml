@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem action="base.action_res_bank_form" id="menu_pos_check_res_bank_form" parent="point_of_sale.menu_point_config_product" groups="point_of_sale.group_pos_manager"/>
+
+</odoo>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account.view_move_form2">
+            <field name="name">account.move.form.inherited</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="before">
+                    <field name="seq_name" readonly="1"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account.view_move_tree2">
+            <field name="name">account.move.tree.inherited</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_tree"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="before">
+                    <field name="seq_name" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

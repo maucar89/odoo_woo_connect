@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report 
+            id="action_report_products_amount"
+            string="Products PDF Report"
+            model="report.abs_top_sold_products.report_products_amount" 
+            report_type="qweb-pdf"
+            file="abs_top_sold_products.report_products_amount" 
+            name="abs_top_sold_products.report_products_amount" 
+        />
+
+    </data>
+</odoo>

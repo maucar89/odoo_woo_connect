@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="sale_customer_credit_limit.modal_error">
+        <div class="modal o_website_modal " tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <t t-call="website.modal_header" />
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p t-if="credit_limit == 0">You are not able to make a purchase on credit.</p>
+                                <p t-if="credit_limit > 0">You have exceeded your credit limit:</p>
+                            </div>
+                        </div>
+                        <div t-if="credit_limit > 0" class="row">
+                            <div class="col-xs-12">
+                                <table class="table">
+                                    <tr>
+                                        <td>Your purchase</td>
+                                        <td class="text-right"><t t-esc="currency_symbol"/> <t t-esc="order_amount"/></td>
+                                    </tr>
+                                    <tr t-if="open_credit > 0">
+                                        <td>Your open credit</td>
+                                        <td class="text-right"><t t-esc="currency_symbol"/> <t t-esc="open_credit" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Your credit limit</td>
+                                        <td class="text-right"><t t-esc="currency_symbol"/> <t t-esc="credit_limit"/></td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td><b>Exceeded credit</b></td>
+                                        <td class="text-right"><b><t t-esc="currency_symbol"/> <t t-esc="exceeded_credit"/></b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-call="sale_customer_credit_limit.modal_footer" />
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="sale_customer_credit_limit.modal_footer">
+        <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+    </t>
+
+</templates>

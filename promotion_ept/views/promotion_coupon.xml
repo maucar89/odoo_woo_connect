@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_coupon_list_tree" model="ir.ui.view">
+			<field name="name">promotion.coupon.list.tree</field>
+	        <field name="model">promotion.coupon</field>
+	        <field name="arch" type="xml">
+	        	<tree string="Coupons" decoration-success="used==True">
+	        		<field name="promotion_id"/>
+	 				<field name="code"/>
+	            	<field name="expiry_date"/>
+			        <field name="order_id"/>
+			        <field name="partner_id"/>
+			        <field name="used"/>
+			    </tree>
+	        </field>
+	    </record>
+	    <record id="view_coupon_form" model="ir.ui.view">
+	        <field name="name">promotion.coupon.form</field>
+	        <field name="model">promotion.coupon</field>
+	        <field name="arch" type="xml">
+	        	<form string="Coupons" edit="false" create="false">
+	        		<sheet>
+	        			<group>
+	        				<field name="promotion_id"/>
+			 				<field name="code"/>
+			            	<field name="expiry_date"/>
+			            	<field name="partner_id"/>
+					        <field name="order_id"/>
+					        <field name="applied_order_id"/>
+					        <field name="used"/>
+	        			</group>
+	        		</sheet>
+	        	</form>
+	        </field>
+	    </record>
+	</data>
+</odoo>

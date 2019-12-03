@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?> <odoo>
+	<template id="sh_amount_in_words_report_account_invoice" 
+inherit_id="account.report_invoice_document">
+ 		<!--xpath expr="//div[@class='col-xs-4 pull-right']" 
+position="after">
+ 			<div class="col-xs-12">
+	 			<span t-if="o.print_to_report==True">
+		 			<span><strong>Amount : 
+</strong></span>
+		 			  <span 
+t-field="o.amount_in_words"/>
+				</span>
+			</div>
+		</xpath-->
+	</template>
+	
+</odoo> 

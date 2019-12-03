@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="customer_order_delivery_date_assets_frontend" inherit_id="website.assets_frontend">
+          <xpath expr="." position="inside">
+             <script type="text/javascript" src="/website_customer_order_delivery_date/static/src/js/website_customer_order_delivery_date.js"></script>
+         </xpath>
+    </template>
+
+    <template id="website_sale_customer_order_delivery_date" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='payment_method']" position="before">
+            <t t-if="website and not website.is_customer_order_delivery_date_feature">
+                <div class="mb64 row">
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <div class='col-sm-4'>
+                                <div class="form-group">
+                                    <label class="control-label" for="delivery_date">Delivery Date</label>
+                                    <div class='input-group date'>
+                                        <input type='text' class="form-control" id='delivery_date' readonly="True"/>
+                                        <span class="input-group-addon" id='delivery_date_icon'
+                                              onclick="$('#delivery_date').datepicker('show');">
+                                            <span class="fa fa-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <t t-if="website and not website.is_customer_order_delivery_comment_feature">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <label class="control-label" for="delivery_comment">Delivery Comment</label><br/>
+                                        <textarea class="form-control" id="delivery_comment" placeholder="Write a comment..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                         </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

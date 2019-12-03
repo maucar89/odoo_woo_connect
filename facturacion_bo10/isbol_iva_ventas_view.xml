@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_invoice_form3" model="ir.ui.view">
+            <field name="name">account.invoice.form.ivaventas</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+			        <field name="payment_term" position="before">
+                        <field name="amount_to_text" />
+                    </field>                 
+
+                   <xpath expr="//field[@name='fiscal_position']" position="before">
+                        <field name="com_estadofiscal" />                                                
+                    </xpath>
+              
+            </field>
+        </record>
+
+
+          <!--IVA tree View INVOICE-->
+        <record id="account_invoice_form5" model="ir.ui.view">
+            <field name="name">account.invoice.tree.ivaventas</field>
+            <field name="model">account.invoice</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+               
+                    <field name="state" position="after"> 
+                        <field name="com_estadofiscal" />
+                    </field>     
+               
+           </field>
+        </record>
+
+
+
+        <record id="invoice_supplier_form4" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form2</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='invoice_line']//field[@name='price_subtotal']" position="replace">
+                    <field name="subtotal"/>
+                </xpath>
+            </field>
+        </record>
+
+                <record id="invoice_supplier_form5" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form2</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='invoice_line']//field[@name='price_subtotal']" position="replace">
+                    <field name="subtotal"/>
+                </xpath>
+            </field>
+        </record>
+<!--
+
+        <record id="account_move_form2" model="ir.ui.view">
+            <field name="name">account.move.form.ivaventas</field>
+            <field name="model">account.move</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                    <field name="journal_id" position="after">
+                        <field name="asiento_estadofiscal" />
+                    </field>
+            </field>
+        </record>
+-->       
+                  <!--IVA tree View INVOICE-->
+        <record id="account_move_form3" model="ir.ui.view">
+            <field name="name">account.move.tree.ivaventas</field>
+            <field name="model">account.move</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="account.view_move_tree"/>
+            <field name="arch" type="xml">
+               
+                    <field name="state" position="after"> 
+                        <field name="asiento_estadofiscal" />
+                    </field>     
+               
+           </field>
+        </record>
+
+                  <!--Ventas IVA tree View-->
+
+          <!--Avisos tree View-->
+        <record id="account_invoice_ventasiva1" model="ir.ui.view">
+           <field name="name">account.invoice.ventasiva1</field>
+           <field name="model">account.invoice</field>
+           <field name="arch" type="xml">
+               <tree colors="red:com_estadofiscal == 'A';black:com_estadofiscal == 'V' " string="Invoice">
+                    <field name="journal_id"/>
+                    <field name="date_invoice"/>                    
+                    <field name="internal_number" invisible="1" />
+                    <field name="invoice_number" invisible="0" />
+                    <field name="autorizacion"/>
+                    <field name="com_estadofiscal"/>
+                    <field name="nit"/>
+                    <field name="partner_id"/>                                        
+                    <field name="bruto" sum="Total"/>                   
+                    <field name="ice" sum="Total"/>
+                    <field name="excento" sum="Total"/>
+                    <field name="neto" sum="Total"/>
+                    <field name="debito" sum="Total"/>
+                    <field name="code"/>                   
+                    <field name="state"/>
+               </tree>
+           </field>
+        </record>
+
+        <record id="tko_invoice_cancel_tree" model="ir.ui.view">
+            <field name="name">account.invoice.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="number" position="replace">
+                    <field name="number" invisible="1"/>
+                    <field name="internal_number" invisible="1" />
+                    <field name="invoice_number" invisible="0" />
+                </field>
+            </field>
+        </record>
+
+        <record id="account_invoice_ventasiva1_search" model="ir.ui.view">
+            <field name="name">Iva Ventas Search</field>
+            <field name="model">account.invoice</field>            
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">               
+               <!-- add your filtre at the end -->
+                <xpath expr="filter[@string='Invoices']"
+                    position="after">
+                     <filter string="Facturas Emitidas" name="facturas_emitidas"
+                            domain="[('state', '!=', 'draft'), ('nit', '!=', False)]" />
+                </xpath>
+
+               <!-- add your group at the end -->
+                <xpath expr="//filter[@string='Partner']"
+                    position="after">
+                    <filter string="Sucursales" domain="[]" context="{'group_by':'journal_id'}"/>
+                </xpath>                                    
+                </field>
+
+            </record>
+
+<!---
+        <record id="tko_invoice_cancel_customer_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <field name="number" position="replace">
+                    <field name="number" invisible="1"/>
+                    <field name="internal_number" />
+                </field>
+            </field>
+        </record>
+
+        <record id="tko_invoice_cancel_supplier_form" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <field name="number" position="replace">
+                    <field name="number" invisible="1"/>
+                    <field name="internal_number" />
+                </field>
+            </field>
+        </record>
+-->
+
+        
+        <record id="action_ventas_iva" model="ir.actions.act_window">
+            <field name="name">Libro de Ventas IVA</field>
+            <field name="res_model">account.invoice</field>            
+            <field name="view_id" ref="account_invoice_ventasiva1" />
+            <field name="context">{"search_default_facturas_emitidas":1}</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+<menuitem id="menu_iva_ventas_parent" name="Libros IVA" parent="account.menu_finance"></menuitem>
+<menuitem action="action_ventas_iva" id="menu_iva_ventas" parent="menu_iva_ventas_parent" string="Result"/>
+
+
+
+
+    </data>
+</openerp>

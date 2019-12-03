@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_partner_hcategory_tree" model="ir.ui.view">
+        <field name="name">res.partner.hcategory.tree</field>
+        <field name="model">res.partner.hcategory</field>
+        <field name="arch" type="xml">
+            <tree toolbar="True">
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_partner_hcategory_form" model="ir.ui.view">
+        <field name="name">res.partner.hcategory.form</field>
+        <field name="model">res.partner.hcategory</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Related Partners">
+                            <field name="partner_ids" widget="many2many" domain="[('parent_id', '=', False), ('hcategory_id', '=', False)]"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_partner_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.hcategory</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partner_hcategory_tree"/>
+    </record>
+
+    <record id="view_partner_hcategory_hierarchy" model="ir.ui.view">
+        <field name="name">res.partner.hcategory.hierarchy</field>
+        <field name="model">res.partner.hcategory</field>
+        <field name="field_parent">child_ids</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_partners"
+              name="Partners"
+              parent="base.menu_administration" 
+              sequence="0"/>
+    <menuitem action="base.action_partner_form"
+              id="menu_action_res_partners"
+              name="Partners"
+              parent="menu_partners"
+              sequence="0"/>
+    <menuitem action="action_partner_category"
+              id="menu_partner_category"
+              name="Categories"
+              parent="menu_partners"
+              sequence="10"/>
+
+</odoo>

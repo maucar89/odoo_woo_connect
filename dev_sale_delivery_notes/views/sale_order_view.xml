@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+    <record id="view_sale_order_del_notes_view_form" model="ir.ui.view">
+        <field name="name">sale.order.del.order.notes.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook//page//div[@class='oe_clear']" position="before">
+            	<field name="delivery_notes" class="oe_inline" placeholder="Delivery Order Comments ..."
+            		attrs="{'readonly':[('state','!=','draft')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

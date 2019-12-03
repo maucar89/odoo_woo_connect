@@ -1,0 +1,37 @@
+<odoo>       
+	<record id="promotion_product_normal_form_view" model="ir.ui.view">
+        <field name="name">promotion.product.template.common.form</field>
+        <field name="model">product.product</field> 
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//group[@name='group_general']" position="replace">
+        	<group name="group_general">
+	        	<field name="type" readonly="context.get('default_type')=='service'"/>
+	        	<field name="categ_id" string="Internal Category"/>
+	        </group>
+        </xpath>
+       </field>
+    </record>                 
+	<record id="product_form_inherit" model="ir.actions.act_window">
+			<field name="name">Product</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">product.product</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="context">{'default_is_promo_product':1,'default_type':'service'}</field>
+            <field name="domain">[('is_promo_product','=',True)]</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="product.product_kanban_view"></field>
+			<field name="help" type="html">
+		        <p class="oe_view_nocontent_create">Click here to add new Promotion Product
+		        </p>
+		    </field>
+	</record>
+	
+	<menuitem id="menu_action_product_form" 
+			parent="promotion_ept.menu_sale_promotion"
+			name="Promotion Product"
+			groups="promotion_ept.group_promotion_product"
+			sequence="1"
+			action="product_form_inherit"/> 
+ 	
+</odoo>

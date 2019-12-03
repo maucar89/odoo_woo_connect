@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="dusal_view_order_form">
+      <field name="name">dusal.sale.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//sheet/group/group[2]" position="after">
+            <group>
+              <field name="print_line_number"/>
+              <field name="print_product_image"/>
+              <field name="image_size"/>
+            </group>
+          </xpath>
+          <xpath expr="//field[@name='order_line']/form[1]/group/group/field[@name='product_id']" position="after">
+            <field name="product_image_medium" readonly="1" style="max-width: 120px; max-height: 120px;" widget="image"/>
+            <!-- <field name="product_image" style="max-width: 120px; max-height: 120px;" widget="image"/> -->
+          </xpath>
+          <xpath expr="//field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+            <field name="product_image_small" readonly="1" style="max-width: 80px; max-height: 80px;" widget="image"/>
+            <!-- <field name="product_image" style="max-width: 80px; max-height: 80px;" widget="image"/> -->
+          </xpath>
+        </data>
+      </field>
+    </record>
+
+    <record id="invoice_form_dusal" model="ir.ui.view">
+      <field name="name">dusal.account.invoice.form</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//field[@name='sent']" position="after">
+            <group>
+              <field name="print_line_number"/>
+              <field name="print_product_image"/>
+            </group>
+          </xpath>
+          <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+            <field name="product_image" readonly="1" style="max-width: 80px; max-height: 80px;" widget="image"/>
+            <!-- <field name="product_image" style="max-width: 80px; max-height: 80px;" widget="image"/> -->
+          </xpath>
+        </data>
+      </field>
+    </record>
+
+    <record id="view_invoice_line_form_dusal" model="ir.ui.view">
+      <field name="name">dusal.account.invoice.line.form</field>
+      <field name="model">account.invoice.line</field>
+      <field name="inherit_id" ref="account.view_invoice_line_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//form/field[@name='name']" position="after">
+            <field name="product_image" readonly="1" style="max-width: 120px; max-height: 120px;" widget="image"/>
+            <!-- <field name="product_image" style="max-width: 120px; max-height: 120px;" widget="image"/> -->
+          </xpath>
+        </data>
+      </field>
+    </record>
+
+  </data>
+</openerp>

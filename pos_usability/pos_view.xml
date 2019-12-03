@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  © 2015-2016 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+
+
+<record id="view_pos_config_tree" model="ir.ui.view">
+    <field name="name">usability.pos.config.tree</field>
+    <field name="model">pos.config</field>
+    <field name="inherit_id" ref="point_of_sale.view_pos_config_tree"/>
+    <field name="arch"  type="xml">
+        <field name="name" position="after">
+            <field name="company_id" groups="base.group_multi_company"/>
+        </field>
+    </field>
+</record>
+
+
+<record id="view_pos_session_form" model="ir.ui.view">
+    <field name="name">usability.pos.session.form</field>
+    <field name="model">pos.session</field>
+    <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+    <field name="arch"  type="xml">
+        <xpath expr="//field[@name='statement_ids']/tree/field[@name='total_entry_encoding']" position="attributes">
+            <attribute name="sum">Total Transactions</attribute>
+            <attribute name="widget">monetary</attribute>
+        </xpath>
+        <xpath expr="//field[@name='statement_ids']/tree/field[@name='balance_end_real']" position="attributes">
+            <attribute name="sum">Total Balance Finale</attribute>
+            <attribute name="widget">monetary</attribute>
+        </xpath>
+    </field>
+</record>
+
+<record id="product_pos_category_form_view" model="ir.ui.view">
+    <field name="name">pos.category.form</field>
+    <field name="model">pos.category</field>
+    <field name="inherit_id" ref="point_of_sale.product_pos_category_form_view"/>
+    <field name="arch" type="xml">
+        <div class="oe_left" position="before">
+            <div class="oe_button_box" name="button_box">
+                <button class="oe_stat_button"
+                        name="%(product.product_template_action_all)d"
+                        icon="fa-th-list"
+                        type="action"
+                        context="{'search_default_pos_categ_id': active_id}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value"><field name="product_count"/></span>
+                        <span class="o_stat_text"> Products</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </field>
+</record>
+
+</odoo>

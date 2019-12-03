@@ -1,0 +1,98 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dusal_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-26 02:08+0000\n"
+"PO-Revision-Date: 2015-09-28 11:17+0200\n"
+"Last-Translator: David <david@closemarketing.es>\n"
+"Language-Team: Almas <almas@dusal.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.5\n"
+"Language: es\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: dusal_sale
+#: help:sale.order,print_product_image:0
+msgid ""
+"If this checkbox checked then print product images on Sales order & Quotation"
+msgstr ""
+"Si la casilla de verificación activada, las imágenes de productos en Pedidos "
+"& Presupuestos se imprimirán"
+
+#. module: dusal_sale
+#: help:sale.order,image_size:0
+msgid "Choose an image size here"
+msgstr "Elija un tamaño de imagen aquí"
+
+#. module: dusal_sale
+#: view:website:sale.report_saleorder_document
+#: field:sale.order.line,product_image:0
+msgid "Image"
+msgstr "Imagen"
+
+#. module: dusal_sale
+#: field:sale.order,image_size:0
+msgid "Image sizes"
+msgstr "Tamaños de imagen"
+
+#. module: dusal_sale
+#: help:sale.order,print_line_number:0
+msgid "Print line number on Sales order & Quotation"
+msgstr "Mostrar Número de línea en Pedidos y Presupuestos de Ventas"
+
+#. module: dusal_sale
+#: field:sale.order,print_line_number:0
+msgid "Print line number"
+msgstr "Mostrar Número de línea"
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Medium"
+msgstr "Medio"
+
+#. module: dusal_sale
+#: view:website:sale.report_saleorder_document
+msgid "No."
+msgstr "Num."
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Big"
+msgstr "Gran"
+
+#. module: dusal_sale
+#: field:sale.order,print_product_image:0
+msgid "Print product image"
+msgstr "Mostrar Imagen del producto"
+
+#. module: dusal_sale
+#: field:sale.order.line,product_image_medium:0
+msgid "Image medium"
+msgstr "Imagen Media"
+
+#. module: dusal_sale
+#: field:sale.order.line,product_image_small:0
+msgid "Image small"
+msgstr "Imagen pequeña"
+
+#. module: dusal_sale
+#: model:ir.model,name:dusal_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido Venta"
+
+#. module: dusal_sale
+#: model:ir.model,name:dusal_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Small"
+msgstr "Pequeño"

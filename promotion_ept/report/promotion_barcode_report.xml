@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="report_promotion_barcode"
+            string="barcode / pdf"
+            model="promotion.method" 
+            report_type="qweb-pdf"
+            file="promotion_ept.report_promotion" 
+            name="promotion_ept.report_promotion" 
+        />
+    </data>
+</odoo>

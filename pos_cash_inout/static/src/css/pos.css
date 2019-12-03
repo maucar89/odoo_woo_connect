@@ -1,0 +1,62 @@
+.popup.popup-textinput.put-money-in {
+    font-size: 14px;
+    height: 280px;
+}
+.popup.popup-textinput.take-money-out {
+    font-size:14px;
+    height: 280px;
+}
+.control-button.put_money_in {
+    font-size: 14px;
+    font-weight: bold;
+}
+.control-button.take_money_out {
+    font-size: 14px;
+    font-weight: bold;
+}
+.title_in_out{
+	font-size:16px;
+	border-bottom: solid 3px rgb(110, 200, 155) !important;
+}
+#tbl_id{
+	margin-left: 16px;
+}
+#txt_amount__in_id{
+	width: 100%;
+    min-height: 10px;
+    height: 30px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 14px;
+}
+#txt_reason_in_id{
+	width: 100%;
+	min-height: 10px;
+    height: 30px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 14px;
+}
+#tbl_id{
+	margin-left: 12px;
+    width: 64%;
+}
+#td_id{
+	padding:6px;
+}
+#txt_amount__out_id{
+    width: 100%;
+    min-height: 10px;
+    height: 30px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 14px;
+}
+#txt_reason_out_id{
+    width: 100%;
+    min-height: 10px;
+    height: 30px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 14px;
+}

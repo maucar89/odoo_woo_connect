@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_property_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.property.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='credit']" position="after">
+                    <field name="credit_limit_currency_id" invisible="1"/>
+                    <field name="credit_limit"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

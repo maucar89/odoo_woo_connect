@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+    <template id="report_picking_opration" inherit_id="stock.report_picking">
+    	<xpath expr="//div[@class='page']//p[2]" position="after">
+    		<t t-if="o.delivery_notes">
+    			<div class="row">
+					<div class="col-xs-12">
+						<b>Delivery Notes:</b><br/>
+						<span t-field="o.delivery_notes"/>
+					</div>
+				</div>
+    		</t>
+	    </xpath>
+    </template>
+    
+    <template id="report_picking_delivery_inherit_sale_stock" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@class='page']//table[@class='table table-condensed mt48'][1]" position="after">
+    		<t t-if="o.delivery_notes">
+    			<div class="row">
+					<div class="col-xs-12">
+						<b>Delivery Notes:</b><br/>
+						<span t-field="o.delivery_notes"/>
+					</div>
+				</div>
+    		</t>
+	    </xpath>
+    </template>
+    
+    
+</odoo>

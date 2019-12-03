@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PutMoneyIn">
+        <span class="control-button put_money_in">
+            Put Money In
+        </span>
+    </t>
+
+    <t t-name="TakeMoneyOut">
+        <span class="control-button take_money_out">
+            Take Money Out
+        </span>
+    </t>
+
+    <t t-name="PutMoneyInPopup">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput put-money-in">
+                <p class="title title_in_out">Put Money In</p>
+                <div style="margin-right: 130px;font-size: 15px;margin-right: 105px;">
+                    Fill in this form if you put money in the cash register:
+                </div>
+                <t t-raw="widget.msg_show_put_money_in"/>
+                <div class="footer">
+                    <div class="button confirm">
+                        OK
+                    </div>
+                    <div class="button cancel">
+                        Cancel 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TakeMoneyOutPopup">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput take-money-out">
+                <p class="title title_in_out">Take Money Out</p>
+                <div style="margin-right: 130px;font-size: 15px;margin-right: 105px;">
+                    Describe why you take money from the cash register:
+                </div>
+                <t t-raw="widget.msg_show_take_money_out"/>
+                <div class="footer">
+                    <div class="button confirm">
+                        OK
+                    </div>
+                    <div class="button cancel">
+                        Cancel 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

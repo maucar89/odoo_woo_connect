@@ -1,0 +1,34 @@
+<odoo>
+	<record id="view_order_form_with_promotion" model="ir.ui.view">
+		<field name="name">promotion.sale.order.form.view.with_promotion</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+					<field name="id" invisible="1"/>
+		            <label string="Promotion code" for="promotion_id"/>
+		            <div name='promotion_selection'>
+		            	<div>
+		            	 	<field name="promotion_id" context="{'order_id': id}" class="oe_inline" options="{'no_create': True, 'no_open': True}" attrs="{'readonly':[('state','not in',('draft','sent'))]}" invisible="1"/> 
+		                </div>
+		                <div>
+		                	<field name="coupon_code" string="Coupon Code" attrs="{'readonly':[('state','not in',('draft','sent'))]}" />
+		                </div>
+		                <div>
+		                	<button name="find_promo" string="Set Promotion" type="object" class="oe_inline fa fa-arrow-right oe_link" attrs="{'invisible':['|',('state','not in',('draft','sent')),('promotion_id','!=',False)]}"/>
+		                	<button name="unset_promotion" string="Unset Promotion" type="object" class="oe_inline fa fa-arrow-right oe_link" attrs="{'invisible':['|',('state','not in',('draft','sent')),('promotion_id','=',False)]}"/>
+		                </div>
+		            </div>
+		        </xpath>
+		        <xpath expr="//field[@name='amount_untaxed']" position="after">
+		        	<field name="promo_price" widget='monetary' options="{'currency_field': 'currency_id'}" attrs="{'invisible':[('promotion_id','=',False)]}"/>
+		        </xpath>
+		        <xpath expr="//field[@name='note']" position="after">
+		        	<field name="promo_note" class="oe_inline" readonly="1" attrs="{'invisible':[('state','in',('draft','cancel'))]}"/>
+		        </xpath>
+		    </data>
+		</field>
+	</record>
+</odoo>
+

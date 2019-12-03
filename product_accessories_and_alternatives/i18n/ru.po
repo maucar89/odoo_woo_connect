@@ -1,0 +1,141 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_accessories_and_alternatives
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-13 10:02+0000\n"
+"PO-Revision-Date: 2017-04-13 13:03+0300\n"
+"Last-Translator: Yulia Novoselova <novoselova@itlibertas.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ru\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_template_accessories_count
+msgid "# of accessories"
+msgstr "Кол-во сопутствующих товаров"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_template_alternatives_count
+msgid "# of alternatives"
+msgstr "Кол-во аналогов"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_template_only_form_view
+msgid "Accessories"
+msgstr "Сопутствующие товары"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_accessory_product_ids
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_template_accessory_product_ids
+msgid "Accessory Products"
+msgstr "Сопутствующие товары"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_accessories_wizard_form_view
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_alternatives_wizard_form_view
+msgid "Add"
+msgstr "Добавить"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_alternative_product_ids
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_template_alternative_product_ids
+msgid "Alternative Products"
+msgstr "Аналоги"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_template_only_form_view
+msgid "Alternatives"
+msgstr "Аналоги"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,help:product_accessories_and_alternatives.field_product_alternatives_wizard_alternative_product_ids
+#: model:ir.model.fields,help:product_accessories_and_alternatives.field_product_template_alternative_product_ids
+msgid "Appear on the product page"
+msgstr "Появится на странице Продукции"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,help:product_accessories_and_alternatives.field_product_accessories_wizard_accessory_product_ids
+#: model:ir.model.fields,help:product_accessories_and_alternatives.field_product_template_accessory_product_ids
+msgid "Appear on the shopping cart"
+msgstr "Появится в корзине"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_accessories_wizard_form_view
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_alternatives_wizard_form_view
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_create_uid
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_create_date
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_display_name
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_id
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard___last_update
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard___last_update
+msgid "Last Modified on"
+msgstr "Последнее Изменение"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_write_uid
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновлено"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_accessories_wizard_write_date
+#: model:ir.model.fields,field_description:product_accessories_and_alternatives.field_product_alternatives_wizard_write_date
+msgid "Last Updated on"
+msgstr "Последний раз обновлено"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.actions.act_window,name:product_accessories_and_alternatives.product_accessories_wizard_action
+#: model:ir.model,name:product_accessories_and_alternatives.model_product_accessories_wizard
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_accessories_wizard_form_view
+msgid "Product Accessories"
+msgstr "Сопутствующие товары"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.actions.act_window,name:product_accessories_and_alternatives.product_alternatives_wizard_action
+#: model:ir.model,name:product_accessories_and_alternatives.model_product_alternatives_wizard
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_alternatives_wizard_form_view
+msgid "Product Alternatives"
+msgstr "Аналоги"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.model,name:product_accessories_and_alternatives.model_product_template
+msgid "Product Template"
+msgstr "Шаблон продукта"
+
+#. module: product_accessories_and_alternatives
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_accessories_wizard_form_view
+#: model:ir.ui.view,arch_db:product_accessories_and_alternatives.product_alternatives_wizard_form_view
+msgid "or"
+msgstr "или"

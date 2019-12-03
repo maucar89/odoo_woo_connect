@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="sh_amount_in_words_report_order_purchase" inherit_id="purchase.report_purchaseorder_document">
+<!--    		<xpath expr="//div/div[hasclass('col-xs-4 pull-right')]" position="after">
+ -->
+   		<xpath expr="//div/div[@class='col-xs-4 pull-right']" position="after">
+ 			<div class="col-xs-12 pull-left">
+	 			<span t-if="o.print_to_report==True"> 			
+	 				<span><strong>Amount : </strong></span> 				
+ 		    		<span t-field="o.amount_in_words"/>
+ 		    	</span>
+ 			</div>
+		</xpath>  
+ 	</template>
+</odoo>

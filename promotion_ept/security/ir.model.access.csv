@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_promotion_method_rule_based,promotion.method.rule.based,model_promotion_method_rule_based,,1,1,1,1
+access_promotion_method_user,promotion.method.user,model_promotion_method,promotion_ept.group_promotion_user,1,0,0,0
+access_promotion_method_manager,promotion.method.manager,model_promotion_method,promotion_ept.group_promotion_manager,1,1,1,1
+access_promotion_coupon,promotion.coupon,model_promotion_coupon,,1,1,1,1

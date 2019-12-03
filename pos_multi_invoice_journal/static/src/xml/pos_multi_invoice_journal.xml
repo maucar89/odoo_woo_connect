@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="PaymentScreenWidget">
+        <t t-jquery="div[class*='paymentmethods-container']" t-operation="after">
+            <t t-if="widget.pos.config.invoice_journal_ids and widget.pos.config.invoice_journal_ids.length > 0">
+                <div class='invoice_journals'>
+                    <p class="title" style="text-align: center;margin-left: 20px;">Invoice Journal</p>
+                </div>
+            </t>
+        </t>
+    </t>
+
+    <t t-name="journal_list">
+        <div class='paymentmethods'>
+            <t t-foreach="widget.pos.journals" t-as="journal">
+                <div class="button journal" t-att-data-id="journal['id']">
+                    <t t-esc="journal['name']" />
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

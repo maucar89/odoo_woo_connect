@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="form_view_sale_order_schedule_date">
+            <field name="name">form.view.sale.order.schedule.date</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+					<field name="schedule_date"/>
+                </xpath>
+                <xpath expr="//field[@name='customer_lead']" position="replace">
+					<!-- <field name="customer_lead" invisible="1"/> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="form_view_sale_stock_schedule_date">
+            <field name="name">form.view.sale.stock.schedule.date</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="before">
+                    <field name="schedule_date"/>
+                </xpath>
+                <xpath expr="//field[@name='min_date']" position="replace">
+                    <field name="min_date" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tree_view_sale_stock_schedule_date">
+            <field name="name">tree.view.sale.stock.schedule.date</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='min_date']" position="before">
+                    <field name="schedule_date"/>
+                </xpath>
+                <xpath expr="//field[@name='min_date']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock.stock_picking_calendar">
+            <field name="name">stock.picking.calendar</field>
+            <field name="model">stock.picking</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="schedule_date" date_stop="max_date" color="partner_id">
+                    <field name="origin"/>
+                    <field name="picking_type_id"/>
+                    <field name="partner_id"/>
+                </calendar>
+            </field>
+        </record>
+    </data>
+</openerp>
+

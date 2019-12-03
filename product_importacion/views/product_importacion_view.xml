@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="product_template_manufacturer_form_view">
+            <field name="name">product.product_template_form_view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+
+              <field name="categ_id" position="after">
+                <!--field name="pro_igo"/>
+                <field name="pro_stock_minimo"/>
+                <field name="pro_stock_maximo"/-->
+                <field name="pro_pu_fob" />
+              </field>
+              <field name="type" position="after">
+                <field name="pro_nombre_corto"/>
+              </field>
+                <page name="Importaciones" position="inside">
+                    <group name="Importaciones" string="Importaciones">
+                        <group>
+                            <field name="pro_master"/>
+                            <field name="pro_estado" />
+                            <field name="pro_color" />
+                            <field name="pro_precio_modificado" />
+                        </group>
+                        <!--group>
+                          <field name="pro_secuencia" />
+                          <field name="pro_promedio_anual" />
+                          <field name="pro_analisis_mexico" />
+                          <field name="pro_cantidad_empaque" />
+                          <field name="uom_id" />
+                          <field name="pro_grado_complejidad" />
+                        </group-->
+                    </group>
+                </page>
+            </field>
+        </record>
+
+    </data>
+</odoo>

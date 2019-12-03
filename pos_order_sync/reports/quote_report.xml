@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+<data>
+	<template id="quote_order_report">
+		<t t-call="report.html_container">
+			<t t-foreach="docs" t-as="o">
+				<div class="page">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h2 t-esc="o.user_id.company_id.name"/>
+							<h4>
+								<span>Quote # </span>
+								<span t-field="o.quote_id"/>
+							</h4>
+							<div t-field="o.partner_id"
+								t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true, "phone_icons": true}'/>
+							User: <span t-field="o.user_id"/><br/>
+							Date: <span t-field="o.date_order"/><br/>
+						</div>
+					</div>
+					<div class="row"></div>
+					<t t-set="display_discount" t-value="any([l.discount for l in o.lines])"/>
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Description</th>
+								<th class="text-right">Quantity</th>
+								<th class="text-right">Unit Price</th>
+								<th class="text-right">Price</th>
+							</tr>
+						</thead>
+						<tbody class="sale_tbody">
+							<t t-foreach="o.lines" t-as="l">
+								<tr t-if="l.qty">
+									<td>
+									   <span t-field="l.product_id.name"/>
+									</td>
+									<td class="text-right">
+										<span t-field="l.qty"/>
+									</td>
+									<td class="text-right">
+										<span t-field="l.price_unit"  t-options="{'widget': 'monetary', 'display_currency': o.pricelist_id.currency_id}"/>
+									</td>
+									<td class="text-right">
+										<span t-esc="l.price_subtotal"  t-options="{'widget': 'monetary', 'display_currency': o.pricelist_id.currency_id}"/>
+										<t t-if="l.discount != 0.0">
+                                    		<span t-esc="l.discount"/>%
+                                		</t>
+									</td>
+								</tr>
+							</t>
+						</tbody>
+					</table>
+					<div class="row">
+						<div class="col-xs-6 pull-right">
+							<table class="table table-condensed">
+								<tr class="border-black">
+									<td><strong>Taxes</strong></td>
+									<td class="text-right">
+										<strong t-esc="o.amount_tax"  t-options="{'widget': 'monetary', 'display_currency': o.pricelist_id.currency_id}"/>
+									</td>
+								</tr>
+								<tr>
+									<td><strong>Total</strong></td>
+									<td class="text-right">
+										<strong t-esc="o.amount_total"  t-options="{'widget': 'monetary', 'display_currency': o.pricelist_id.currency_id}"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+</data>
+</odoo>

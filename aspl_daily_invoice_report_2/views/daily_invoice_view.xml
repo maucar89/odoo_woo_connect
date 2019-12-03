@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="daily_invoice_form_view" model="ir.ui.view">
+            <field name="name">daily.invoice.form</field>
+            <field name="model">daily.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Daily Invoice">
+                   <group col="4">
+                           <field name="from_date"/>
+                           <field name="to_date"/>
+                   </group>
+                   <group>
+                   		<field name="partner_categ_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="customer_ids" widget="many2many_tags" context="{'partner_categ_ids':partner_categ_ids}" options="{'no_create': True}"/>
+                        <field name="sale_team_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                   </group>
+                   <footer>
+                        <button name="action_print" class="oe_highlight" string="Print"
+                                type="object"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_daily_invoice" model="ir.actions.act_window">
+            <field name="name">Daily Invoice</field>
+            <field name="res_model">daily.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="daily_invoice_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="daily_inv_custom_accounting_reports" name="Custom Reports" 
+        parent="account.menu_finance" sequence="6" groups="account.group_account_user"/>
+        <menuitem action="action_daily_invoice" id="menu_daily_invoice"
+        parent="daily_inv_custom_accounting_reports" sequence="10" name="Daily Invoice"/>
+
+    </data>
+</odoo>

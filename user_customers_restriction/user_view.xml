@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_allowed_customers_users_form" model="ir.ui.view">
+            <field name="name">user_restriction.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//page" position="after">
+                        <page string="Allowed Customers" attrs="{'invisible': [('name', '==', 'Administrator')]}">
+                            <field name="user_restricted_ids" nolabel="1" colspan="2"/>
+                        </page>
+                    </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

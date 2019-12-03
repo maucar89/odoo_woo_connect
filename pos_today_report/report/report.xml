@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="launch_pos_today_report"
+            model="pos.config"
+            string="POS Report Today"
+            report_type="qweb-pdf"
+            name="pos_today_report.pos_today_report"
+            file="pos_today_report.pos_today_report"
+        />
+
+        <report
+            id="launch_pos_yesterday_report"
+            model="pos.config"
+            string="POS Report Yesterday"
+            report_type="qweb-pdf"
+            name="pos_today_report.pos_yesterday_report"
+            file="pos_today_report.pos_yesterday_report"
+            paperformat="pos_today_report.paperformat_portrait"
+        />
+
+        <record id="launch_pos_today_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_portrait" />
+        </record>
+    </data>
+</openerp>

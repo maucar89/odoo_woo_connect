@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_pos_config_kanban_inherit">
+            <field name="name">pos.config.kanban.view.inherit</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='col-xs-6 o_kanban_card_manage_section o_kanban_manage_new']" position="inside">
+                    <div>
+                        <a name="%(launch_pos_today_report)d" type="action">Today</a>
+                    </div>
+                    <div>
+                        <a name="%(launch_pos_yesterday_report)d" type="action">Yesterday</a>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,99 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dusal_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-26 02:07+0000\n"
+"PO-Revision-Date: 2015-09-26 10:22+0700\n"
+"Last-Translator: Almas <almas@dusal.net>\n"
+"Language-Team: Dusal Solutions <almas@dusal.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: mn\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: dusal_sale
+#: help:sale.order,print_product_image:0
+msgid "If this checkbox checked then print product images on Sales order & Quotation"
+msgstr "Борлуулалтын баримт ба үнийн санал дээр зураг хэвлэх"
+
+#. module: dusal_sale
+#: help:sale.order,image_size:0
+msgid "Choose an image size here"
+msgstr "Зургийн хэмжээг энд сонгоно"
+
+#. module: dusal_sale
+#: help:sale.order,print_line_number:0
+msgid "Print line number on Sales order & Quotation"
+msgstr "Борлуулалтын баримт ба үнийн санал дээр дугаарлалт хэвлэх"
+
+#. module: dusal_sale
+#: view:website:sale.report_saleorder_document
+msgid "Image"
+msgstr "Зураг"
+
+#. module: dusal_sale
+#: field:sale.order,image_size:0
+msgid "Image sizes"
+msgstr "Зургийн хэмжээ"
+
+#. module: dusal_sale
+#: field:sale.order,print_line_number:0
+msgid "Print line number"
+msgstr "Мөрийн дугаар хэвлэх"
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Medium"
+msgstr "Дунд"
+
+#. module: dusal_sale
+#: view:website:sale.report_saleorder_document
+msgid "No."
+msgstr "№"
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Big"
+msgstr "Том"
+
+#. module: dusal_sale
+#: field:sale.order,print_product_image:0
+msgid "Print product image"
+msgstr "Бүтээгдэхүүний зураг хэвлэх"
+
+#. module: dusal_sale
+#: field:sale.order.line,product_image_medium:0
+msgid "Image medium"
+msgstr "Дунд"
+
+#. module: dusal_sale
+#: field:sale.order.line,product_image:0
+msgid "Image"
+msgstr "Зураг"
+
+#. module: dusal_sale
+#: field:sale.order.line,product_image_small:0
+msgid "Image small"
+msgstr "Жижиг"
+
+#. module: dusal_sale
+#: model:ir.model,name:dusal_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Борлуулалтын захиалга"
+
+#. module: dusal_sale
+#: model:ir.model,name:dusal_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Борлуулалтын Захиалгын Мөр"
+
+#. module: dusal_sale
+#: selection:sale.order,image_size:0
+msgid "Small"
+msgstr "Жижиг"

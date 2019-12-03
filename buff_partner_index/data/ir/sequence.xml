@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Sequences for partner index -->
+
+        <record id="seq_partner_index_a" model="ir.sequence">
+            <field name="name">Partner Index A</field>
+            <field name="code">partner.index.a</field>
+            <field name="prefix">A-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_b" model="ir.sequence">
+            <field name="name">Partner Index B</field>
+            <field name="code">partner.index.b</field>
+            <field name="prefix">B-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_c" model="ir.sequence">
+            <field name="name">Partner Index C</field>
+            <field name="code">partner.index.c</field>
+            <field name="prefix">C-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_d" model="ir.sequence">
+            <field name="name">Partner Index D</field>
+            <field name="code">partner.index.d</field>
+            <field name="prefix">D-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_e" model="ir.sequence">
+            <field name="name">Partner Index E</field>
+            <field name="code">partner.index.e</field>
+            <field name="prefix">E-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_f" model="ir.sequence">
+            <field name="name">Partner Index F</field>
+            <field name="code">partner.index.f</field>
+            <field name="prefix">F-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_g" model="ir.sequence">
+            <field name="name">Partner Index G</field>
+            <field name="code">partner.index.g</field>
+            <field name="prefix">G-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_h" model="ir.sequence">
+            <field name="name">Partner Index H</field>
+            <field name="code">partner.index.h</field>
+            <field name="prefix">H-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_i" model="ir.sequence">
+            <field name="name">Partner Index I</field>
+            <field name="code">partner.index.i</field>
+            <field name="prefix">I-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_j" model="ir.sequence">
+            <field name="name">Partner Index J</field>
+            <field name="code">partner.index.j</field>
+            <field name="prefix">J-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_k" model="ir.sequence">
+            <field name="name">Partner Index K</field>
+            <field name="code">partner.index.k</field>
+            <field name="prefix">K-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_l" model="ir.sequence">
+            <field name="name">Partner Index L</field>
+            <field name="code">partner.index.l</field>
+            <field name="prefix">L-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_m" model="ir.sequence">
+            <field name="name">Partner Index M</field>
+            <field name="code">partner.index.m</field>
+            <field name="prefix">M-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_n" model="ir.sequence">
+            <field name="name">Partner Index N</field>
+            <field name="code">partner.index.n</field>
+            <field name="prefix">N-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_o" model="ir.sequence">
+            <field name="name">Partner Index O</field>
+            <field name="code">partner.index.o</field>
+            <field name="prefix">O-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_p" model="ir.sequence">
+            <field name="name">Partner Index P</field>
+            <field name="code">partner.index.p</field>
+            <field name="prefix">P-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_q" model="ir.sequence">
+            <field name="name">Partner Index Q</field>
+            <field name="code">partner.index.q</field>
+            <field name="prefix">Q-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_r" model="ir.sequence">
+            <field name="name">Partner Index R</field>
+            <field name="code">partner.index.r</field>
+            <field name="prefix">R-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_s" model="ir.sequence">
+            <field name="name">Partner Index S</field>
+            <field name="code">partner.index.s</field>
+            <field name="prefix">S-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_t" model="ir.sequence">
+            <field name="name">Partner Index T</field>
+            <field name="code">partner.index.t</field>
+            <field name="prefix">T-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_u" model="ir.sequence">
+            <field name="name">Partner Index U</field>
+            <field name="code">partner.index.u</field>
+            <field name="prefix">U-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_v" model="ir.sequence">
+            <field name="name">Partner Index V</field>
+            <field name="code">partner.index.v</field>
+            <field name="prefix">V-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_w" model="ir.sequence">
+            <field name="name">Partner Index W</field>
+            <field name="code">partner.index.w</field>
+            <field name="prefix">W-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_x" model="ir.sequence">
+            <field name="name">Partner Index X</field>
+            <field name="code">partner.index.x</field>
+            <field name="prefix">X-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_y" model="ir.sequence">
+            <field name="name">Partner Index Y</field>
+            <field name="code">partner.index.y</field>
+            <field name="prefix">Y-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_z" model="ir.sequence">
+            <field name="name">Partner Index Z</field>
+            <field name="code">partner.index.z</field>
+            <field name="prefix">Z-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="seq_partner_index_noalpha" model="ir.sequence">
+            <field name="name">Partner Index Non-Alphabet</field>
+            <field name="code">partner.index.na</field>
+            <field name="prefix">#-</field>
+            <field name="padding">5</field>
+        </record>
+
+    </data>
+</openerp>

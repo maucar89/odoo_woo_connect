@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+   <record id="view_customer_order_delivery_sale_form_view_inherited" model="ir.ui.view">
+        <field name="name">view.customer.order.delivery.sale.order.form.view.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Customer Order Delivery Date" invisible="0" class="delivery_date">
+                    <label for="customer_order_delivery_date"/> 
+                    <field name="customer_order_delivery_date" class="oe_inline"/>
+                    <field name="customer_order_delivery_comment" nolabel="1"/>
+                </page>
+            </notebook>
+       </field>
+    </record>
+</odoo>

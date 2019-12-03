@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="product_accessories_wizard_view_form" model="ir.ui.view">
+            <field name="name">Product Accessories</field>
+            <field name="model">product.accessories.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Product Accessories">
+                    <sheet>
+                        <field name='accessory_product_ids'
+                               widget='many2many_kanban'
+                        >
+                        <kanban quick_create="false" create="true" delete="true">
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div class="oe_kanban_global_click"
+                                         style="position: relative;"
+                                    >
+                                        <a t-if="! read_only_mode"
+                                           type="delete"
+                                           style="position: absolute; right: 0; padding: 4px; diplay: inline-block;"
+                                        >X</a>
+                                        <div class="oe_module_vignette">
+                                            <img t-att-src="kanban_image('product.product', 'image_small', record.id.value)"
+                                                 class="oe_avatar oe_kanban_avatar"
+                                            />
+                                            <div class="oe_module_desc">
+                                                <b><field name="name"/></b>
+                                                <br>Price: <field name="lst_price"/></br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                        </field>
+                    </sheet>
+                    <footer>
+                        <button name="apply_changes"
+                                type="object"
+                                string="Add"
+                                class="oe_highlight"
+                        />
+                        or
+                        <button name="cancel"
+                                string="Cancel"
+                                special="cancel"
+                                class="oe_link"
+                        />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_accessories_wizard_action" model="ir.actions.act_window" >
+            <field name="name">Product Accessories</field>
+            <field name="res_model">product.accessories.wizard</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="product_accessories_wizard_view_form"/>
+        </record>
+
+    </data>
+</openerp>

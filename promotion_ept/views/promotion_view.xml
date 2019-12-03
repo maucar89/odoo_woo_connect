@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="req_link_sale_order" model="res.request.link">
+            <field name="name">promotion</field>
+            <field name="object">promotion.method</field>
+       	</record>
+       	
+		<record id="action_sale_order_list" model="ir.actions.act_window">
+            <field name="name">Sale Order</field>
+            <field name="res_model">sale.order</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'in', ['sale', 'done'])]</field>
+        </record>
+		<record id="action_sale_order_line_list" model="ir.actions.act_window">
+            <field name="name">Sale Order Lines</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'in', ['sale', 'done'])]</field>
+        </record>
+        <record id="action_sale_quotation_list" model="ir.actions.act_window">
+            <field name="name">Sale quotation</field>
+            <field name="res_model">sale.order</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ['sale', 'done'])]</field>
+        </record>
+		<record id="action_sale_quotation_line_list" model="ir.actions.act_window">
+            <field name="name">Sale quotation Lines</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ['sale', 'done'])]</field>
+        </record>
+        <record id="action_promotion_coupons" model="ir.actions.act_window">
+            <field name="name">Promotion Coupons</field>
+            <field name="res_model">promotion.coupon</field>
+            <field name="context">{}</field>
+        </record>
+		<record id="view_promotion_list_tree" model="ir.ui.view">
+			<field name="name">promotion.list.tree</field>
+	        <field name="model">promotion.method</field>
+	        <field name="arch" type="xml">
+	        	<tree string="Promotion" colors="red:state=='close';green:state=='approve';gray:state=='cancel'" >
+	        		<field name="sequence_name" invisible="1"/>
+	 				<field name="promo_name"/>
+	            	<field name="coupon_code"/>
+			        <field name="date_start"/>
+			        <field name="date_end"/>
+			        <field name="state"/>
+			    </tree>
+	        </field>
+	    </record>
+	    <record id="view_promotion_list_form" model="ir.ui.view">
+	        <field name="name">promotion.list.form</field>
+	        <field name="model">promotion.method</field>
+	        <field name="arch" type="xml">
+	        	<form string="Promotion">
+	        		<header>
+						<button string="Set to Draft" type="object" name="draft" states="close,cancel" groups="promotion_ept.group_promotion_manager"/>
+						<button string="Approve" type="object" name="approve" states="draft" class="btn-primary" groups="promotion_ept.group_promotion_manager"/>
+						<button string="Send by Email" type="object" name="action_coupon_send" states="approve" class="btn-primary" groups="promotion_ept.group_promotion_manager"/>
+						<button string="Close" type="object" name="close" states="approve" groups="promotion_ept.group_promotion_manager"/>
+						<button string="Cancel" type="object" name="cancel" states="approve" groups="promotion_ept.group_promotion_manager"/>
+						<button name="%(action_promotion_extend_wizard)d" string="Extend Promotion" type="action" states="approve" groups="promotion_ept.group_promotion_manager"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+	            	<sheet>
+	            		<div class="oe_button_box" name="button_box">
+		                	<button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+		                    	<field name="active" widget="boolean_button" options='{"terminology": "active"}'/>
+		                    </button>
+					        <button class="oe_stat_button"
+	                                name="action_view_saleorders"
+	                                icon="fa-th-list"
+	                                type="object"
+	                                context="{'search_default_categ_id': active_id}">
+	                                <div class="o_form_field o_stat_info">
+	                                    <span class="o_stat_value"><field name="order_count"/></span>
+	                                    <span class="o_stat_text"> Orders</span>
+	                                </div>
+	                        </button>
+			                <button class="oe_stat_button"
+	                                name="action_view_saleorders_line"
+	                                icon="fa-th-list"
+	                                type="object"
+	                                context="{'search_default_categ_id': active_id}">
+	                                <div class="o_form_field o_stat_info">
+	                                    <span class="o_stat_value"><field name="orderline_count"/></span>
+	                                    <span class="o_stat_text"> Lines</span>
+	                                </div>
+	                        </button>
+	                        <button class="oe_stat_button"
+	                                name="action_view_quotationorders"
+	                                icon="fa-th-list"
+	                                type="object"
+	                                context="{'search_default_categ_id': active_id}">
+	                                <div class="o_form_field o_stat_info">
+	                                    <span class="o_stat_value"><field name="quotation_count"/></span>
+	                                    <span class="o_stat_text"> Quotations</span>
+	                                </div>
+	                        </button>
+			                <button class="oe_stat_button"
+	                                name="action_view_quotationorders_line"
+	                                icon="fa-th-list"
+	                                type="object"
+	                                context="{'search_default_categ_id': active_id}">
+	                                <div class="o_form_field o_stat_info">
+	                                    <span class="o_stat_value"><field name="quotationline_count"/></span>
+	                                    <span class="o_stat_text"> QLines</span>
+	                                </div>
+	                        </button>
+	                        <button class="oe_stat_button"
+	                                name="action_view_coupons"
+	                                icon="fa-th-list"
+	                                type="object"
+	                                attrs="{'invisible':[('used_in_next_order', '=', False)]}"
+	                                context="{'search_default_categ_id': active_id}">
+	                                <div class="o_form_field o_stat_info">
+	                                    <span class="o_stat_value"><field name="coupon_count"/></span>
+	                                    <span class="o_stat_text"> Coupons</span>
+	                                </div>
+	                        </button>
+	                    </div>
+	            	<h1><field name="sequence_name"/></h1>
+	               	<group>
+	               		<field name="name" string="Promotion Name" attrs="{'readonly': [('state','=','approve')]}"/>
+	               		<field name="promotion_product_id" attrs="{'readonly': [('state','=','approve')]}" groups='promotion_ept.group_promotion_product_show'/>
+		 			</group>
+	                <group>
+		            <group>
+			        	<field name="coupon_code" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <field name="used_in_next_order" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <label for="date_start" string="Promotion Period"/>
+                        <div><field name="date_start" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/> to<field name="date_end" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/></div>
+                       	<field name="is_specific_time" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <label for="time_start" string="Promotion Period(24 hours)" attrs="{'invisible':[('is_specific_time', '=', False)]}"/>
+                        <div><field name="time_start" widget="float_time" class="oe_inline" attrs="{'readonly': [('state','=','approve')],'invisible':[('is_specific_time', '=', False)]}"/> <label for="time_end" string="to" attrs="{'invisible':[('is_specific_time', '=', False)]}"/> <field name="time_end" widget="float_time" class="oe_inline" attrs="{'readonly': [('state','=','approve')],'invisible':[('is_specific_time', '=', False)]}"/></div>
+                       	<field name="timezone" attrs="{'readonly': [('state','=','approve')],'invisible':[('is_specific_time', '=', False)]}"></field>
+                       	<field name="create_date" readonly="1"/>
+			        </group>
+	                <group>
+	                	<field name="total_salepromo_amount"/>
+	                	<field name="promotion_budget" attrs="{'readonly': [('state','=','approve')]}"/>
+	                    <field name="max_promotion_amount" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <field name="min_order_amount" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <field name="min_order_quantity" attrs="{'readonly': [('state','=','approve')]}"/>
+			            <label for="used_promo_count" string="Used Promotion"/>
+			            <div><field name="used_promo_count"/><strong> / </strong><label class="oe_edit_only" for="max_coupon_limit" string="Total Usage Limit" attrs="{'invisible': [('state','=','approve')]}"/><field name="max_coupon_limit" attrs="{'readonly': [('state','=','approve')]}"/></div>
+		            </group>
+	                </group>                    
+	                <notebook>
+	                	<page name="promotion_type" string="Promotion Levels" default="1" attrs="{'readonly': [('state','=','approve')]}">
+	                    	<group>
+		                    	<group>
+					              	<field name="applied_on" widget="radio" attrs="{'readonly': [('state','=','approve')]}"/>
+					               	<field name="categ_ids" attrs="{'invisible':[('applied_on', '!=', 'product_category')], 'required':[('applied_on', '=', 'product_category')], 'readonly':[('state','=','approve')]}" />
+			                        <field name="product_tmpl_ids" attrs="{'invisible':[('applied_on', '!=', 'product')],'required':[('applied_on', '=', 'product')], 'readonly':[('state','=','approve')]}" string="Product"/>
+			                        <field name="product_ids" attrs="{'invisible':[('applied_on', '!=', 'product_variant')],'required':[('applied_on', '=', 'product_variant')], 'readonly':[('state','=','approve')]}" string="Product Variant"/>
+			                    </group>
+	                        </group>
+	                    </page>
+	                    <page name="promotion_amount" string="Promotion Types">
+	                    	<group>
+			                	<field name="compute_price" widget="radio" string="Compute Promotion" attrs="{'readonly': [('state','=','approve')]}"/>
+			                </group>
+	                    	<group>
+			                	<group col="2" attrs="{'invisible':[('compute_price', '!=', 'fixed')]}">
+			                    	<field name="fixed_price" colspan="2"  string="Fixed Price" options="{'currency_field': 'currency_id'}" attrs="{'required':[('compute_price', '=', 'fixed')],'readonly': [('state','=','approve')]}"/>
+			                    </group>
+			                    <group col="2" attrs="{'invisible':[('compute_price', '!=', 'percentage')]}">
+			                    	<label string="Percentage" for="price_discount" />
+			                        <div>
+			                        	<field name="percent_price" colspan="2" class="oe_inline" attrs="{'required':[('compute_price', '=', 'percentage')],'readonly': [('state','=','approve')]}"/>%
+			                       	</div>
+			                    </group>
+			                    <group col="8" colspan="8" attrs="{'invisible':[('compute_price', '!=', 'other_promotionlist')]}">
+			                    	<field name="base_promotionlist_id"  string="Other Promotionlist" attrs="{'required':[('compute_price', '=', 'other_promotionlist')],'readonly': [('state','=','approve')]}"/>
+			                        <separator string="+" style="color:black"/>
+			                        <label string="Extra Promotion" for="price_discount"/>
+				                    <div class="o_row">
+				                    	<field name="price_discount" attrs="{'readonly': [('state','=','approve')]}"/>
+				                        <span>%%</span>
+				                    </div>
+				                    <separator string="+" style="color:black"/>
+				                    <label string="Extra off" for="price_surcharge"/>
+				                    <field name="price_surcharge" nolabel="1" attrs="{'readonly': [('state','=','approve')]}"/>
+				                </group>
+			              		<group col="2" attrs="{'invisible':[('compute_price', '!=', 'range')]}">
+			                    	<field name="range_based_on" colspan="2"  string="Range Based On" attrs="{'readonly': [('state','=','approve')]}"/>
+			                    </group>
+	                    	</group>
+	                    	<notebook>
+	                    		<page name="rule" string="Rule" attrs="{'invisible':[('compute_price', '!=', 'range')]}" autofocus="True">
+			                    	<field name="rule_based_ids" attrs="{'required':[('compute_price', '=', 'range')],'readonly': [('state','=','approve')]}">
+			                    		<tree string="Rule Lines" editable="bottom">
+			                    			<field name="from_start"/>
+			                          	 	<field name="to_end"/>
+			                          	 	<field name="price_based_on"/>
+			                          	 	<field name="based_on_fixed_price" attrs="{'invisible':[('price_based_on', '!=', 'fixed')]}" />
+				                            <field name="based_on_percent_price" attrs="{'invisible':[('price_based_on', '!=', 'percentage')]}" />
+			                          	</tree>
+			                        </field>
+		                    	</page>
+		                    	<page name="bogo_sale" string="BOGO Sale" attrs="{'invisible':[('compute_price', '!=', 'bogo_sale')],'readonly': [('state','=','approve')]}">
+		                    		<group col="2">
+			                    		<field name="bogo_sale_on" colspan="2"  string="BOGO" attrs="{'readonly': [('state','=','approve')]}"/>
+			                    	</group>
+			                    	<group attrs="{'invisible':[('bogo_sale_on', '!=', 'bxgy')]}">
+			                    		<field name="bxgy_Aproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+			                    		<field name="bxgy_Bproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+			                    	</group>
+			                    		<group attrs="{'invisible':[('bogo_sale_on', '!=', 'bogelse')]}">
+			                    		<field name="bogoelse_Aproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                				<field name="free_products" class="oe_inline" attrs="{'required':[('bogo_sale_on', '=', 'bogelse'),('compute_price', '=', 'bogo_sale')],'readonly': [('state','=','approve')]}"/>
+		                				<field name="bogoelse_Bproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                			</group>
+			                    	<group attrs="{'invisible':[('bogo_sale_on', '!=', 'promo_on_prdct_B')]}">
+		                				<field name="Aproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                				<field name="Bproduct" class="oe_inline" attrs="{'required':[('bogo_sale_on', '=', 'promo_on_prdct_B'),('compute_price', '=', 'bogo_sale')],'readonly': [('state','=','approve')]}"/>
+		                				<field name="Bproduct_unit" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                				<field name="promo_on_prdct_B_on" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                				<field name="promo_on_prdct_B_fixed_price" class="oe_inline" attrs="{'invisible':[('promo_on_prdct_B_on', '!=', 'fixed_price')],'readonly': [('state','=','approve')]}"/>
+		                				<field name="promo_on_prdct_B_percentage_price" class="oe_inline" attrs="{'invisible':[('promo_on_prdct_B_on', '!=', 'percentage')],'readonly': [('state','=','approve')]}"/>
+		                			</group>
+	                			</page>
+	                		</notebook>
+	                    </page>
+	                    <page name="customers" string="Customers">
+		                	<group>
+		                    	<field name="max_limit_per_user" string="Limit Per User" attrs="{'readonly': [('state','=','approve')]}"/>
+		                    </group>
+		                    <group>
+		                    	<field name="is_for_specific_customers" attrs="{'readonly': [('state','=','approve')]}"/>
+		                    </group>
+		                   	<group attrs="{'invisible':[('is_for_specific_customers', '=', False)]}">
+		                    	<field name="customer_ids" attrs="{'readonly': [('state','=','approve')],'required': [('is_for_specific_customers','=',True)]}"/>
+		                   	</group>
+		                   	<group>
+		                   		<field name="is_for_specific_customer_group" attrs="{'readonly': [('state','=','approve')]}"/>
+		                   	</group>
+		                   	<group attrs="{'invisible':[('is_for_specific_customer_group', '=', False)]}">
+		                    	<field name="partner_category_ids" attrs="{'readonly': [('state','=','approve')],'required': [('is_for_specific_customer_group','=',True)]}"/>
+		                   	</group>
+		                   	<group>
+		                   		<field name="is_for_specific_area" attrs="{'readonly': [('state','=','approve')]}"/>
+		                   	</group>
+		                   	<group col="4" colspan="4" attrs="{'invisible':[('is_for_specific_area', '=', False)]}">
+		                   		<field name="country_ids" widget="many2many_tags" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+		                   		<field name="state_ids" widget="many2many_tags" class="oe_inline" attrs="{'readonly': [('state','=','approve')],'invisible' :[('country_ids','=',[])]}" domain="[('country_id','in',country_ids)]"/>
+		                   		<label for="zip_from" string="Zip Range" attrs="{'readonly': [('state','=','approve')]}"/>
+		                        <div><field name="zip_from" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/><strong> to</strong><field name="zip_to" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/></div>
+		                   </group>
+	                    </page>
+	                <page name="barcode_detail" string="Barcode detail" attrs="{'readonly': [('state','=','approve')]}">
+	                    	<group>
+	                    				<field name="bar_code_sequence" invisible="1" />
+	                    				<field name="bar_code_ean13" attrs="{'readonly': [('state','=','approve')]}"/>
+	                    				<field name="bar_image"/>
+	                    				<field name="barcode_discription" attrs="{'readonly': [('state','=','approve')]}"/>
+	                    	</group>
+	                    </page>
+	                </notebook>
+	              </sheet>
+	              
+	              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+	            </form>
+	        </field>
+	    </record>
+	    <record id="promotion_kanban_view" model="ir.ui.view">
+        <field name="name">Promotion.kanban</field>
+        <field name="model">promotion.method</field>
+        <field name="arch" type="xml">
+            <kanban >
+                <field name="coupon_code"/>
+                <field name="name"/>
+                <field name="state" />
+                <field name="applied_on"/>
+                <field name="promotion_budget"/>
+                <field name="total_salepromo_amount"/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details" style="height: 150px;">
+                            <ul>
+                            <li>
+                            	<span style="padding-right: 10px;" title="Name"><field name="name"/></span>                            	
+                            </li>
+                             <li>
+                            	<li>
+	                            	<h4><span title="Coupon Code"><field name="coupon_code"/></span>
+			                        <t t-if="record.state.raw_value=='approve'">
+			                        <span style="float: right; color: green;"><field name="state"/></span>
+			                       	</t>
+			                       	<t t-if="record.state.raw_value=='close'">
+			                        <span style="float: right;color: red;"><field name="state"/></span>
+			                       	</t>
+			                       	<t t-if="record.state.raw_value=='draft'">
+			                        <span style="float: right;color: black;"><field name="state"/></span>
+			                       	</t>
+			                       	<t t-if="record.state.raw_value=='cancel'">
+			                        <span style="float: right;color: grey;"><field name="state"/></span>
+			                       	</t>
+			                    	 </h4>
+		                    	</li>
+		                     		<span title="Specific maximum discount should be allowed per sales"><field name="max_promotion_amount"/></span>
+		                      		
+		                      </li>
+		                     <table>
+		                     	<tr>
+		                     		<td rowspan="2">
+			                     	<field name="total_salepromo_amount" widget="gauge" style="width:150px; height: 80px; cursor: pointer;" options="{'max_field': 'promotion_budget'}">  </field>
+			                  		</td >
+			                  	</tr>
+			                  	<tr >
+			                  		<td>
+                               			<div class="oe_salesteams_orders">
+                               			<a name="action_view_saleorders" type="object">Sales Orders</a>
+                               			</div>
+                               			<div class="oe_salesteams_quotations">
+				                  			<a name="action_view_quotationorders" type="object" class="oe_sparkline_bar_link">Quotations</a>
+				                 		 </div>
+                               		</td>
+                               	</tr>                               	
+                               </table>
+		                    </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_promotion_method_search" model="ir.ui.view">
+        <field name="name">promotion.method.search</field>
+        <field name="model">promotion.method</field>
+        <field name="arch" type="xml">
+                <search string="Search Promotion Method">
+                    <field name="name" string="Promotion"/>
+                    <field name="sequence_name" string="Sequence"/>
+                    <field name="coupon_code" string="Coupon Code"/>
+                    <separator/>
+                    <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                    <filter string="Approve" name="approve" domain="[('state','=','approve')]"/>
+                    <filter string="Cancel" name="cancel" domain="[('state','=','cancel')]"/>
+                    <filter string="Close" name="close" domain="[('state','=','close')]"/>
+                    <filter string="Global" name="global" domain="[('applied_on','=','global')]"/>
+                    <filter string="Product" name="product" domain="[('applied_on','=','product')]"/>
+                    <filter string="Product Category" name="product_category" domain="[('applied_on','=','product_category')]"/>
+                    <filter string="Product Variant" name="product_variant" domain="[('applied_on','=','product_variant')]"/>
+               </search>
+            </field>
+    </record>
+		<record id="action_promotion_list_form" model="ir.actions.act_window">
+			<field name="name">Promotion Methods</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">promotion.method</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="view_type">form</field>
+			<field name="search_view_id" ref="view_promotion_method_search"/>
+			<field name="view_id" ref="promotion_kanban_view"></field>
+			<field name="help" type="html">
+		        <p class="oe_view_nocontent_create">Click here to add new promotion
+		        </p>
+		    </field>
+		</record>
+			
+		<menuitem id="menu_sale_promotion" 
+			name="Promotion"
+			groups="base.group_user"
+		 	parent="sales_team.menu_base_partner"
+		 	sequence="50"/>
+		<menuitem id="menu_action_sale_promotion_list_form" 
+			parent="menu_sale_promotion"
+			name="Promotion"
+			sequence="1"
+			action="action_promotion_list_form"/>
+		
+	</data>
+</odoo>

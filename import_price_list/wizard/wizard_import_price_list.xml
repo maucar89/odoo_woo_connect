@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        
+        <record id="form_wizard_import_price_list" model="ir.ui.view">
+            <field name="name">form.wizard.import.price.list.form</field>
+            <field name="model">wizard.import.price.list</field>
+            <field name="arch" type="xml">
+                <form string="Importar Tarifas (code,price) .CSV">
+                    <group>
+                        <group>
+                            <field name="file_data" filename="file_name" widget="binary" required="1" class="oe_inline"/>
+                            <field name="aplica_variante"/>
+                        </group>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <footer>
+                        <button string="Importar" name="import_button" icon='fa-cloud-upload' type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_import_price_list" model="ir.actions.act_window">
+            <field name="name">Importar Tarifas (code,price) .CSV</field>
+            <field name="res_model">wizard.import.price.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    
+        <menuitem action="action_wizard_import_price_list" id="price_list_menu_import" 
+            parent="sale.menu_product_pricelist_main" sequence="3" name="Importar Tarifas"/>
+
+    </odoo>

@@ -1,0 +1,22 @@
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for promotion method -->
+		<record id="promotion_method" model="ir.sequence">
+		<field name="name">Promotion Sequence</field>
+		<field name="code">promotion.method</field>
+		<field name="prefix">PROMO/</field>
+		<field name="padding">5</field>
+		<field name="number_increment">1</field>
+		</record>
+	</data>
+	<data noupdate="1">
+		<!-- Sequences for barcode promotion method -->
+		<record id="promotion_method_barcode" model="ir.sequence">
+		<field name="name">Promotion barcode Sequence </field>
+		<field name="code">barcode.promotion.method</field>
+		<field name="prefix"></field>
+		<field name="padding">12</field>
+		<field name="number_increment">1</field>
+		</record>
+	</data>
+</odoo>

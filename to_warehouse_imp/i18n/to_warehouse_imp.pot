@@ -1,0 +1,111 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* to_warehouse_imp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-28 13:45+0000\n"
+"PO-Revision-Date: 2017-02-28 13:45+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,field_description:to_warehouse_imp.field_stock_move_done_record_deviation
+#: model:ir.model.fields,field_description:to_warehouse_imp.field_stock_picking_done_record_deviation
+msgid "Done Record Deviation"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_move_search
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_picking_internal_search
+msgid "In Next 30 Days"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_move_search
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_picking_internal_search
+msgid "In Next 7 Days"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model,name:to_warehouse_imp.model_stock_location
+msgid "Inventory Locations"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.quant_search_view
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_move_search
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_picking_internal_search
+msgid "Last 30 Days"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.quant_search_view
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_move_search
+msgid "Last 7 Days"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,field_description:to_warehouse_imp.field_stock_picking_manual_transfer_date
+#: model:ir.model.fields,field_description:to_warehouse_imp.field_stock_move_manual_transfer_date
+msgid "Manual Transfer Date"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.quant_search_view
+msgid "Orders processed Today"
+msgstr "Đơn hàng được xử lý Hôm nay"
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,field_description:to_warehouse_imp.field_stock_location_user_id
+msgid "Responsible"
+msgstr "Thủ kho"
+
+#. module: to_warehouse_imp
+#: model:ir.model,name:to_warehouse_imp.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,help:to_warehouse_imp.field_stock_move_manual_transfer_date
+#: model:ir.model.fields,help:to_warehouse_imp.field_stock_picking_manual_transfer_date
+msgid "The date and time at which the picking is done.\n"
+"Note: This is just for information in case the date you record done transfer is later than the actual transfer's date (because Odoo automatic records the time upon you mark a picking as done). Procurement calculation will not consider this field."
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,help:to_warehouse_imp.field_stock_location_user_id
+msgid "The user who takes responsibility for this stock location"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model.fields,help:to_warehouse_imp.field_stock_move_done_record_deviation
+#: model:ir.model.fields,help:to_warehouse_imp.field_stock_picking_done_record_deviation
+msgid "This field is to show deviation in hours between the time of actual transfer done (inputed in Manual Transfer Date) and the time recorded by the user (upon pressing done button).\n"
+"The more Deviation, the more delay the user input his transfer action into Odoo."
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.ui.view,arch_db:to_warehouse_imp.quant_search_view
+#: model:ir.ui.view,arch_db:to_warehouse_imp.view_picking_internal_search
+msgid "Today"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: model:ir.model,name:to_warehouse_imp.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: to_warehouse_imp
+#: code:addons/to_warehouse_imp/models/stock_picking.py:44
+#, python-format
+msgid "You cannot mark a stock picking as done at a date earlier than the inputed Manual Transfer Date!\n"
+"The Manual Transfer Date should be earlier than now."
+msgstr ""
+

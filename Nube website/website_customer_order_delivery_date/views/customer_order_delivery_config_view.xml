@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_config_settings_customer_delivery_inherit" model="ir.ui.view">
+            <field name="name">website.config.settings.customer.order.delivery.date.inherit</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[4]" position="after">
+                    <group string="Customer Order Delivery Date">
+                        <field name="is_customer_order_delivery__date_feature"/>
+                        <field name="is_customer_order_delivery__comment_feature"
+                               attrs="{'invisible': [('is_customer_order_delivery__date_feature','=',True),]}"/>
+                    </group>
+                </xpath>
+            </field>
+       </record>
+    </data>
+</odoo>

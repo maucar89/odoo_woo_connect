@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="pos_today_report.pos_yesterday_report">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <h2 class="text-center">
+                        <b>
+                            POS DAILY -
+                            <span t-esc="o.get_yesterday()"/>
+                        </b>
+                    </h2>
+                    <t t-set="pos_orders" t-value="o.get_pos_order_yesterday()"/>
+                    <t t-if="pos_orders">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Receipt Ref</th>
+                                    <th>Customer</th>
+                                    <th>Order Date</th>
+                                    <th>Salesman</th>
+                                    <th>Status</th>
+                                    <t t-foreach="o.journal_ids" t-as="ji">
+                                        <th><span t-field="ji.name"/></th>
+                                    </t>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="sum_amount_total" t-value="0"/>
+                                <t t-foreach="pos_orders" t-as="po">
+                                    <tr>
+                                        <td><span t-field="po.name"/></td>
+                                        <td><span t-field="po.partner_id.name"/></td>
+                                        <td><span t-field="po.date_order"/></td>
+                                        <td><span t-field="po.user_id.name"/></td>
+                                        <td><span t-field="po.state"/></td>
+                                        <td t-foreach="o.journal_ids" t-as="ji">
+                                            <t t-foreach="po.statement_ids" t-as="si">
+                                                <t t-if="ji.id == si.journal_id.id">
+                                                    <span t-field="si.amount"/>
+                                                </t>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <span t-esc="po.amount_total" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            <t t-set="sum_amount_total" t-value="sum_amount_total + po.amount_total"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td colspan="5"/>
+                                    <td t-foreach="o.journal_ids" t-as="ji">
+                                        <t t-set="amount_total" t-value="0"/>
+                                        <t t-foreach="pos_orders" t-as="po">
+                                            <t t-foreach="po.statement_ids" t-as="si">
+                                                <t t-if="ji.id == si.journal_id.id">
+                                                    <t t-set="amount_total" t-value="amount_total + si.amount"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                        <span t-esc="amount_total" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                    </td>
+                                    <td>
+                                        <t t-if="sum_amount_total != 0">
+                                            <span t-esc="sum_amount_total" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

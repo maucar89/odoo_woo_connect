@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_pos_check_account_journal_form" model="ir.ui.view">
+        <field name="name">pos.check.account.journal.form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_authorized_diff']" position="after">
+                <separator string="Check Info" colspan="4"/>
+                <field name="check_info_required" colspan="4"/>
+                <field name="check_auto_fill_amount" attrs="{'invisible':[('check_info_required','=',False)]}" colspan="4"/>
+                <label for="id" string="Bank name" attrs="{'invisible':[('check_info_required','=',False)]}"/>
+                <div colspan="3" attrs="{'invisible':[('check_info_required','=',False)]}">
+                    <div>
+                        <field name="check_bank_name_visible" class="oe_inline"/>
+                        <label for="check_bank_name_visible" string="Visible"/>
+                    </div>
+                    <div>
+                        <field name="check_bank_name_required" class="oe_inline"/>
+                        <label for="check_bank_name_required" string="Required"/>
+                    </div>
+                </div>
+                <label for="id" string="Bank account" attrs="{'invisible':[('check_info_required','=',False)]}"/>
+                <div colspan="3" attrs="{'invisible':[('check_info_required','=',False)]}">
+                    <div>
+                        <field name="check_bank_acc_visible" class="oe_inline"/>
+                        <label for="check_bank_acc_visible" string="Visible"/>
+                    </div>
+                    <div>
+                        <field name="check_bank_acc_required" class="oe_inline"/>
+                        <label for="check_bank_acc_required" string="Required"/>
+                    </div>
+                </div>
+                <label for="id" string="Check Owner" attrs="{'invisible':[('check_info_required','=',False)]}"/>
+                <div colspan="3" attrs="{'invisible':[('check_info_required','=',False)]}">
+                    <div>
+                        <field name="check_owner_visible" class="oe_inline"/>
+                        <label for="check_owner_visible" string="Visible"/>
+                    </div>
+                    <div>
+                        <field name="check_owner_required" class="oe_inline"/>
+                        <label for="check_owner_required" string="Required"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

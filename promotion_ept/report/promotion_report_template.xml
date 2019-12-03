@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_promotion_document">
+    	<t t-call="report.external_layout">
+    	 <t t-set="object" t-value="object.with_context({'lang':object.customer_ids.lang})" />
+	        <div class="page" style="padding-top:50px;">
+	        	<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+	            <span><h3>COUPON</h3></span>
+		           <div class="row mt32 mb32">
+		                <div t-if="object.name" class="col-xs-3">
+		                    <strong>Your Offer:</strong>
+		                    <p t-field="object.name"/>
+		                </div>
+		                <div t-if="object.date_start" class="col-xs-3">
+		                   <strong>From :</strong>
+		                    <p t-field="object.date_start"/>
+		                </div>
+		               <div t-if="object.date_end" class="col-xs-3">
+		                    <strong>To :</strong>
+		                    <p t-field="object.date_end"/>
+		                </div>
+		                <div t-if="object.coupon_code" class="col-xs-3">
+		                   <strong>Secret Coupon :</strong>
+		                    <p t-field="object.coupon_code"/>
+		                </div>
+		            </div>
+		            <div>
+		            <strong>Discount Amount :</strong>
+	                    <t t-if="object.compute_price == 'fixed'">
+		                    <span t-field="object.fixed_price"/>
+		                    <t t-if="object.applied_on =='global'">
+					        	$ Discount On Any Product
+					        </t>
+					        <t t-if="object.applied_on =='product_category'">
+					        	$ On 
+					            <t t-foreach="object.categ_ids" t-as="category">
+					            	<t t-esc="category.name"/>,
+					            </t>
+					        </t>
+					        <t t-if="object.applied_on =='product'">
+					        	$ On
+					        	<t t-foreach="object.product_tmpl_ids" t-as="product">
+					            	<t t-esc="product.name"/>,
+					            </t>
+					        </t>
+					        <t t-if="object.applied_on =='product_variant'">
+					        	$  On
+					        	<t t-foreach="object.product_ids" t-as="product_variant">
+					            	<t t-esc="product_variant.name"/>,
+					            </t>
+					        </t>
+	                    </t>
+			            <t t-if="object.compute_price == 'percentage'">
+				        	<span t-field="object.percent_price"/>
+				            <t t-if="object.applied_on =='global'">
+								% Discount On Any Product
+							</t>
+							<t t-if="object.applied_on =='product_category'">
+								% On 
+								<t t-foreach="object.categ_ids" t-as="category">
+							    	<t t-esc="category.name"/>,
+							    </t>
+							</t>
+							<t t-if="object.applied_on =='product'">
+								% On
+							    <t t-foreach="object.product_tmpl_ids" t-as="product">
+							    	<t t-esc="product.name"/>,
+							    </t>
+							</t>
+							<t t-if="object.applied_on =='product_variant'">
+								% On
+							    <t t-foreach="object.product_ids" t-as="product_variant">
+							    	<t t-esc="product_variant.name"/>,
+							    </t>
+							</t>
+						</t> 
+			            <t t-if="object.compute_price== 'range'">
+				          	<t t-if="object.range_based_on == 'price'">
+				           		This is Range base on Price 	
+				           		<t t-foreach="object.rule_based_ids" t-as="rule">
+			            			Your Order Amount between :
+			            			<t t-esc="rule.from_start"/>
+			            			to 
+			            			<t t-esc="rule.to_end"/> 
+			            			<t t-if="rule.price_based_on == 'fixed'">
+			            				,<t t-esc="rule.based_on_fixed_price"/>$ Discount
+			            			</t>
+			            			<t t-if="rule.price_based_on == 'percentage'">
+			            				,<t t-esc="rule.based_on_percent_price"/>% Discount
+			            			</t>
+			           			</t>
+	                  		</t>
+				            <t t-if="object.range_based_on == 'qty'">
+	                    		This is Range base on Quantity <p></p>
+	                    		<t t-foreach="object.rule_based_ids" t-as="rule">
+	                    					Your Order Quantity between :
+					            			<t t-esc="rule.from_start"/> 
+					            			to
+					            			<t t-esc="rule.to_end"/> 
+					            			<t t-if="rule.price_based_on == 'fixed'">
+					            				,<t t-esc="rule.based_on_fixed_price"/>$ Discount
+					            			</t>
+					            			<t t-if="rule.price_based_on == 'percentage'">
+					            				,<t t-esc="rule.based_on_percent_price"/>% Discount
+					            			</t>
+					            			<p></p>
+					            </t>
+	                    	</t>
+				       	</t>	
+	                    <t t-if="object.compute_price=='other_promotionlist'">
+	                    	Other Discount is <span t-field="object.base_promotionlist_id"/>
+	                    	+ 
+	                    	Extra <span t-field="object.price_discount" /> %  
+	                    	+ 
+	                    	Extra off <span t-field="object.price_surcharge"/>$
+	                    	 <t>
+				             	<t t-if="object.applied_on =='global'">
+				            		ON Any Product
+				            	</t>
+				            	<t t-if="object.applied_on =='product_category'">
+				            		On
+				            		<t t-foreach="object.categ_ids" t-as="category">
+				            			<t t-esc="category.name"/>, 
+				            		</t>
+				            		
+				            	</t>
+				           		<t t-if="object.applied_on =='product'">
+				           			On
+				            		<t t-foreach="object.product_tmpl_ids" t-as="product">
+				            			<t t-esc="product.name"/>,
+				            		</t>
+				            		 
+				            	</t>
+				            	<t t-if="object.applied_on =='product_variant'">
+				            		On
+				            		<t t-foreach="object.product_ids" t-as="product_variant">
+				            			<t t-esc="product_variant.name"/>, 
+				            		</t>
+				            		
+				            	</t>
+				             </t>
+	                    </t>	
+	                    <t t-if="object.compute_price=='bogo_sale'">
+	                    	<t t-if="object.bogo_sale_on=='bxgy'">
+	                    		Buy
+	                    		<span t-field="object.bxgy_Aproduct_unit"/>
+	                    		Unit of
+	                    		<t>
+					             	<t t-if="object.applied_on =='global'">
+					            		Any product
+					            	</t>
+					            	<t t-if="object.applied_on =='product_category'">
+					            		<t t-foreach="object.categ_ids" t-as="category">
+					            			<t t-esc="category.name"/>,
+					            		</t>
+					            	</t>
+					           		<t t-if="object.applied_on =='product'">									            		<t t-foreach="object.product_tmpl_ids" t-as="product">
+					            			<t t-esc="product.name"/>,
+					            		</t>
+					            	</t>
+					            	<t t-if="object.applied_on =='product_variant'">
+					            		<t t-foreach="object.product_ids" t-as="product_variant">
+					            			<t t-esc="product_variant.name"/>,
+					            		</t>
+					            	</t>
+				            	</t> 
+	                    		Get
+	                    		<span t-field="object.bxgy_Bproduct_unit"/>
+	                    		Unit of Product Free
+	                    	</t>
+	                    	<t t-if="object.bogo_sale_on=='bogelse'">
+	                    		Buy
+	                    		<span t-field="object.bogoelse_Aproduct_unit"/>
+	                    		Unit of
+	                    		<t>
+					             	<t t-if="object.applied_on =='global'">
+					            		Any product
+					            	</t>
+					            	<t t-if="object.applied_on =='product_category'">
+					            		<t t-foreach="object.categ_ids" t-as="category">
+					            			<t t-esc="category.name"/>,
+					            		</t>
+					            	</t>
+					           		<t t-if="object.applied_on =='product'">
+					            		<t t-foreach="object.product_tmpl_ids" t-as="product">
+					            			<t t-esc="product.name"/>,
+					            		</t>
+					            	</t>
+					            	<t t-if="object.applied_on =='product_variant'">
+					            		<t t-foreach="object.product_ids" t-as="product_variant">
+					            			<t t-esc="product_variant.name"/>,
+					            		</t>
+					            	</t>
+				           		 </t> 
+	                    		Get
+	                    		<span t-field="object.bogoelse_Bproduct_unit"/>
+	                    		Unit
+	                    		<t t-set="flag" t-value="Flase"/>
+	                    		<t t-foreach="object.free_products" t-as="product">
+	                    			<b><t t-if="flag">, </t><t t-esc="product.name"/></b>
+	                    			<t t-set="flag" t-value="True"/>
+	                    		</t>
+	                    		is Free
+	                    	</t>
+	                    	<t t-if="object.bogo_sale_on=='promo_on_prdct_B'">
+	                    		Buy
+	                    		<span t-field="object.Aproduct_unit"/>Unit of 
+	                    		<t>
+					             	<t t-if="object.applied_on =='global'">
+					            		Any product
+					            	</t>
+					            	<t t-if="object.applied_on =='product_category'">
+					            		<t t-foreach="object.categ_ids" t-as="category">
+					            			<t t-esc="category.name"/>,
+					            		</t>
+					            	</t>
+					           		<t t-if="object.applied_on =='product'">
+					            		<t t-foreach="object.product_tmpl_ids" t-as="product">
+					            			<t t-esc="product.name"/>,
+					            		</t>
+					            	</t>
+					            	<t t-if="object.applied_on =='product_variant'">
+					       				<t t-foreach="object.product_ids" t-as="product_variant">
+					            			<t t-esc="product_variant.name"/>,
+					            		</t>
+					            	</t>
+					            </t>
+		                    	Get
+		                    	<t t-if="object.promo_on_prdct_B_on=='fixed_price'">
+		                    		<span t-field="object.promo_on_prdct_B_fixed_price"/> $ Discount
+		                    	</t>
+		                    	<t t-if="object.promo_on_prdct_B_on=='percentage'">
+		                    		<span t-field="object.promo_on_prdct_B_percentage_price"/> % Discount
+		                    	</t>
+		                    	On
+		                    	<span t-field="object.Bproduct.name"/>
+		                    	<span t-field="object.Bproduct_unit"/>Unit.
+		                    </t>
+	                   	</t>
+			        </div>
+		            <div class="row mt32 mb32" style="padding-top:5px;">
+		                 <img t-if="object.bar_image" t-att-src="'data:image/png;base64,%s' % object.bar_image" height="90" width="230" style="position: absolute; clip: rect(10px,230px,70px,0px)"/>
+		                
+		            </div>
+		            <div class="row mt32 mb32" style="padding-left:63px; padding-top:50px;">
+		            <t t-if="object.bar_code_ean13" >
+		            		<span t-field="object.bar_code_ean13"/>
+		             </t>
+		             </div>
+		            	
+		             <div  class="row mt32 mb32">
+		            	<div t-if="object.barcode_discription" style="padding-top:20px; padding-left:15px; " >
+		                   <strong>Terms and Conditions:</strong>
+		                   <table style="padding-top:5px;"  >
+		                     <p t-field="object.barcode_discription"/>
+		                   </table>
+		                </div>
+		            </div>
+		            	
+		            <div class="row mt32 mb32" style="padding-top:10px;">
+		            	<div class="col-xs-3">
+		                   <h3> <strong> Thank You. </strong></h3>
+		                </div>
+		            </div>
+		   </div>
+	     </t> 
+	</template>	
+	<template id="report_promotion">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="object">
+            <t t-call="promotion_ept.report_promotion_document" t-lang="object.customer_ids.lang"/>
+        </t>
+    </t>
+	</template>
+	
+</odoo>

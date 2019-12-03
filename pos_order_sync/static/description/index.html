@@ -1,0 +1,206 @@
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<section class="oe_container lead">
+    <div class="oe_row">    
+        <div class='oe_span12'>
+            <div class="panel " >
+                <div class="panel-heading">
+                    <div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;"><i class="fa fa-arrow-circle-o-right"></i><b> POS Order Sync </b></div>
+                     <p style="font-size:initial">
+                       A POS Order Sync is a tool to synchronize  order between multiple sessions(when more than one active sessions are available).
+                       It provides a special feature such that the seller can send orders for other active sessions and the other session can load/received that order
+                        and validate the order by making payment. It makes the linkage between multiple session such that any running session can send order for other running sessions. So it will increase the efficiency and decrease the load from the sessions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container lead">
+    <div class="oe_row">    
+        <div class='oe_span12'>
+            <div class="panel " >
+                <div class="panel-heading">
+                    <div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;"><i class="fa fa-arrow-circle-o-right"></i><b> Salient Features </b></div>
+                    <ul class="list-unstyled ">
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Seller can send orders to other active POS Sessions.</li> 
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Seller can load order(s) that are sent by other POS Sessions to his POS Session.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Seller can download the order receipt while sending order to other POS Session.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Only those orders are available to load that belongs to current running POS Session.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> If any order is available to load for current running session then load button will be highlighted automatically</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Seller can see status and history for all quotations/order that are sent by him.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> It makes the linkage between the sessions, to sync order between multiple POS Sessions.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Order send by any POS Session will be saved in Odoo backend as quotation.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> It increases the efficiency and decrease the load from POS Sessions.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> No Backend configuration required.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Just install and Use.</li>
+                        <li style="font-size:initial"><i class="fa fa-check text-primary"></i> Ease of usage.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <ul class="nav nav-tabs ">
+        <li class="active"><a href="#odoo_pos_multi_session" data-toggle="tab"><b>POS Session View</b></a></li>
+        <li><a href="#odoo_pos_multi_session_backend" data-toggle="tab"><b>Backend View</b></a></li>
+        <li><a data-toggle="tab" href="#change_log_pos_order_sync"><b>Change Log</b></a></li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">     
+        <div class="tab-pane active" id="odoo_pos_multi_session"> 
+
+            <section class="oe_container  oe_dark">
+                <div class="oe_row">    
+                    <div class='oe_span12'>
+                        <div class="panel panel-info" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-pencil-square-o "/><b> POS Session View</b></h3>
+                            </div>
+                            <div class="panel-body">
+                                <section class="oe_container  oe_dark lead">  
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i> <b>Sending Order To Other Active POS</b></div>
+                                    <p style="font-size:initial">After adding products to the cart,if seller want to send this order to any other active POS Session, then seller can click on send button to send this order as quotation.
+                                    </p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen1.png" alt="screen1"></p>
+                                    <p style="font-size:initial"> On clicking send button, a popup window will be shown as shown below.Seller can select POS here and send quotation as well as print quotation details. On clicking 'Send and Print' button, quotation will be send and quotation receipt will be generated automatically</p>
+                                    <p>
+                                        <img src="screen2.png" alt="screen10" style="width:70%">
+                                        <img src="screen14.png" style="width:22%;margin-left:3%" alt="screen9 ">
+                                    </p>
+                                    <p style="font-size:initial"> This message will be shown, if order is successfully sent to other session.</p>                     
+                                    <p><img class="img-border img-responsive thumbnail" src="screen2.1.png" alt="screen2.1 "></p>
+                                </section>        
+                                <section class="oe_container  oe_dark lead">
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i> <b>Loading Received Orders</b></div>
+                                    <p style="font-size:initial"> To load quotations(orders) that are sent by other POS Session to current running POS Session, click on load button.
+                                    To update quotation list at any time, click on refresh button as shown below.
+                                    If any quotation(order) is available to load for current running session then load button will be highlighted automatically</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen3.png" alt="screen4"></p>
+                                    <p style="font-size:initial">Seller can Filter quotation on the basis of quote id,customer and load quotation by click on quotation.</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen4.png" alt="screen3"></p>
+                                </section>
+                                <section class="oe_container oe_dark lead">
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i> <b>Order Loaded</b></div>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen5.png" alt="screen5"></p>
+                                </section>
+                                <section class="oe_container  oe_dark lead"> 
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i> <b>Quotation History</b></div>
+                                    <p style="font-size:initial">Click this button to see history and state of all those quotations that are sent by current running POS Session.</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen6.png" alt="screen6"></p>
+                                    <p style="font-size:initial">This history popup will be shown on click history button.Seller can see state of all those quotations that are sent by his POS Session.</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen7.png" alt="screen7"></p>
+                                </section>
+                             </div>
+                        </div>
+                   </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="tab-pane" id="odoo_pos_multi_session_backend">
+            <section class="oe_container  oe_dark">
+                <div class="oe_row">    
+                    <div class='oe_span12'>
+                        <div class="panel panel-info" >
+                            <div class="panel-heading ">
+                                <h3 class="panel-title"><i class="fa fa-pencil-square-o "/><b>Backend View and Configuration</b></h3>
+                            </div>
+                            <div class="panel-body">
+                                <section class="oe_container oe_dark lead"> 
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i><b>Configuration for quotation receipt</b></div>
+                                    <p style="font-size:initial">Select between the option to print quotation in pdf format or in POSBOX receipt.</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen13.png" alt="default_values_2"></p>
+                                </section>
+                                <section class="oe_container oe_dark lead"> 
+                                    <div class="panel-heading alert alert-success"><i class="fa fa-hand-o-right" ></i><b>Backend View of Saved Quotation</b></div>
+                                    <p style="font-size:initial">After creating quotation in POS session,quotaion is also saved in backend as shown below.</p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen8.png" alt="def_conf1"></p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen9.png" alt="defalt_values_1"></p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen10.png" alt="default_values_2"></p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen11.png" alt="default_values_2"></p>
+                                    <p><img class="img-border img-responsive thumbnail" src="screen12.png" alt="default_values_2"></p>
+                                </section>
+                           </div>              
+                       </div>
+                   </div>
+                </div>
+            </section>  
+        </div>
+
+        <div id="change_log_pos_order_sync" class="tab-pane fade">
+            <section class="oe_container oe_dark">
+                <div class="oe_row">
+                    <div class="panel panel-primary" id="wkid0">
+                        <div class="panel-body">
+                            <h4 > Legend</h4>
+                            <ul class="list-unstyled ">
+                                <li><i class="fa fa-plus text-success" ></i> [Features Added]</li>
+                                <li><i class="fa fa-minus text-danger" ></i> [Features Removed]</li>
+                                <li><i class="fa fa-bug text-warning" ></i> [Bug Fixed]</li>
+                            </ul>
+                            <div class="alert alert-info">
+                                <i class="fa fa-plus-circle"></i>
+                                <b> Module Updated from version 1.3.1 to 1.3.2 [16 Nov, 2017] </b>
+                                <b class="pull-right"></b>
+                            </div>
+                            <div class='oe_span12'>
+                                <p><i class="fa fa-plus text-success"/> Sync or save pricelist selected in order from POS Session to Quotation(backend).</p>
+                            </div>
+                            <div class="alert alert-info">
+                                <i class="fa fa-plus-circle"></i>
+                                <b> Module Updated from version 1.3.2 to 1.4.0 [10 Jan, 2018] </b>
+                                <b class="pull-right"></b>
+                            </div>
+                            <div class='oe_span12'>
+                                <p><i class="fa fa-plus text-success"/> Update 'Send Quotation/Order' popup view.</p>
+                                <p><i class="fa fa-plus text-success"/> Quotation list will be automatically updated on clicking load quotation button.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<section class='oe_container oe_dark'>
+    <div class='oe_row'>
+    <div class="oe_span12">
+        <h2 class='oe_slogan'>Complimentary Support</h2>
+            <p>
+            You will get 90 days free support for installation, configuration, or reinstallation (not including data recovery) or any type of issue related to this module.
+            </p>
+    </div>
+    </div>
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Help and Support</h2>
+        </div>
+         <div class="oe_slogan oe_spaced">
+            <img src="icon-help.png">
+            <span ><a onMouseOver="this.style.color='#AC1EE0'"
+   onMouseOut="this.style.color='#7c7bad'" style="color:#7c7bad;" target="_blank" href="https://webkul.uvdesk.com/en/customer/create-ticket">Help</a></span>
+            <img src="icon-support.png">
+            <span ><a onMouseOver="this.style.color='#AC1EE0'"
+   onMouseOut="this.style.color='#7c7bad'" style="color:#7c7bad;" target="_blank" href="https://webkul.uvdesk.com/en/customer/create-ticket">Support</a></span>
+            <img src="icon-features.png">
+            <span ><a onMouseOver="this.style.color='#AC1EE0'"
+   onMouseOut="this.style.color='#7c7bad'" style="color:#7c7bad;" target="_blank" href="https://webkul.uvdesk.com/en/customer/create-ticket">Request new Features</a></span>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="oe_container">
+    <div class="oe_span12">
+        <!-- Piwik Image Tracker-->
+<img src="http://odooimg.webkul.com/analytics/piwik/piwik.php?idsite=3&rec=1&action_name=POS-ORDER-SYNC&url=https://apps.openerp.com/apps/modules/10.0/pos_order_sync&uid=pos_order_sync" style="border:0" alt="" />
+<!-- End Piwik -->
+    </div>
+</section>
+	

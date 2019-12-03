@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>		
+		<record id="view_picking_internal_search" model="ir.ui.view">
+			<field name="name">stock.picking.internal.search</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_internal_search" />
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='done']" position="after">
+					<separator />
+					<filter string="Last 30 Days" name="last_thirty_days"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;=', ((context_today()-datetime.timedelta(days=30)).strftime('%Y-%m-%d'))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;=', ((context_today()-datetime.timedelta(days=30)).strftime('%Y-%m-%d')))]" />
+					<filter string="Today"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('min_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date_done','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]" />
+					<filter string="Tomorrow" name="tomorrow"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('min_date','&lt;=', ((context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('date_done','&lt;=', ((context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d')))]" />
+					<filter string="The Day after Tomorrow" name="the_day_after_tomorrow"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;', ((context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))), ('min_date','&lt;=', ((context_today()+datetime.timedelta(days=2)).strftime('%Y-%m-%d'))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;', ((context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))), ('date_done','&lt;=', ((context_today()+datetime.timedelta(days=2)).strftime('%Y-%m-%d')))]" />
+					<filter string="In Next 7 Days" name="next_seven_days"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('min_date','&lt;=', ((context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d'))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date_done','&lt;=', ((context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d')))]" />
+					<filter string="In Next 30 Days" name="next_thirty_days"
+						domain="['|','&amp;', ('date_done','=',False), ('min_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('min_date','&lt;=', ((context_today()+datetime.timedelta(days=30)).strftime('%Y-%m-%d'))),
+									'&amp;', ('date_done','!=',False), ('date_done','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date_done','&lt;=', ((context_today()+datetime.timedelta(days=30)).strftime('%Y-%m-%d')))]" />
+					<separator />
+					<filter string="Delivery Orders" name="delivery_orders"
+						domain="[('location_id.usage','=','internal'),('location_dest_id.usage','=','customer')]"
+						help="Show Delivery Orders (which have the source location in type of Internal and the destination location in type of Customer)" />
+						
+					<filter string="Receipts" name="receipt"
+						domain="[('location_id.usage','=','supplier'),('location_dest_id.usage','=','internal')]"
+						help="Show Stock Receipts (which have the source location in type of Supplier and the destination location in type of Internal" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

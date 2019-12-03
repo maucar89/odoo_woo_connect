@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_check_make_payment_view_form" model="ir.ui.view">
+        <field name="name">pos.check.make.payment.form</field>
+        <field name="model">pos.make.payment</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_payment"/>
+        <field name="arch" type="xml">
+            <field name="payment_name" position="after">
+                <field name="check_info_required" invisible="1"/>
+                <field name="check_bank_name_visible" invisible="1"/>
+                <field name="check_bank_name_required" invisible="1"/>
+                <field name="check_bank_acc_visible" invisible="1"/>
+                <field name="check_bank_acc_required" invisible="1"/>
+                <field name="check_owner_visible" invisible="1"/>
+                <field name="check_owner_required" invisible="1"/>
+                <field name="check_bank_id" attrs="{'invisible':['|',('check_info_required','=',False),('check_bank_name_visible','=',False)], 'required':[('check_info_required','=',True),('check_bank_name_required','=',True)]}" />
+                <field name="check_bank_acc" attrs="{'invisible':['|',('check_info_required','=',False),('check_bank_acc_visible','=',False)], 'required':[('check_info_required','=',True),('check_bank_acc_required','=',True)]}" />
+                <field name="check_number" attrs="{'invisible':[('check_info_required','=',False)], 'required':[('check_info_required','=',True)]}" />
+                <field name="check_owner" attrs="{'invisible':['|',('check_info_required','=',False),('check_owner_visible','=',False)], 'required':[('check_info_required','=',True),('check_owner_required','=',True)]}" />
+            </field>
+        </field>
+    </record>
+</odoo>
+

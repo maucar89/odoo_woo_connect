@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) Harma Consulting, Inc. -->
+
+<odoo>
+    <template id="hci_website_instagram_template" inherit_id="website.footer_default">
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_facebook']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_facebook" t-if="website.social_facebook" target="_blank"><i class="fa fa-facebook-square"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook-square"/></a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_twitter']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_twitter" t-if="website.social_twitter" target="_blank"><i class="fa fa-twitter"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_linkedin']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_linkedin" t-if="website.social_linkedin" target="_blank"><i class="fa fa-linkedin"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_linkedin" t-if="website.social_linkedin"><i class="fa fa-linkedin"/></a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_youtube']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_youtube" t-if="website.social_youtube" target="_blank"><i class="fa fa-youtube-play"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_googleplus']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher" target="_blank"><i class="fa fa-google-plus-square"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus-square"/></a>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2/a[@t-att-href='website.social_github']" position="replace">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_github" t-if="website.social_github" target="_blank"><i class="fa fa-github"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_github" t-if="website.social_github"><i class="fa fa-github"/></a>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[@id='footer']/div[@class='row']/div[@id='info']/h2" position="inside">
+            <t t-if="website.social_newwindow">
+                <a t-att-href="website.social_instagram" t-if="website.social_instagram" target="_blank"><i class="fa fa-instagram"/></a>
+                <a t-att-href="website.social_pinterest" t-if="website.social_pinterest" target="_blank"><i class="fa fa-pinterest"/></a>
+            </t>
+            <t t-if="not website.social_newwindow">
+                <a t-att-href="website.social_instagram" t-if="website.social_instagram"><i class="fa fa-instagram"/></a>
+                <a t-att-href="website.social_pinterest" t-if="website.social_pinterest"><i class="fa fa-pinterest"/></a>
+            </t>
+        </xpath>
+    </template>
+</odoo>

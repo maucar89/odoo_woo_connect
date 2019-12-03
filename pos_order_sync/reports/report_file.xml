@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+	<data>
+		<report 
+		id="report_quote"
+		string="Receipt"
+		model="pos.quote" 
+		report_type="qweb-pdf"
+		file="pos_order_sync.quote_order_report" 
+		name="pos_order_sync.quote_order_report" 
+		/>
+		<record id="report_quote" model="ir.actions.report.xml">
+			<field name="paperformat_id" ref="pos_order_sync.paperformat_quotereceipt"/>
+		</record>
+	</data>
+</odoo>

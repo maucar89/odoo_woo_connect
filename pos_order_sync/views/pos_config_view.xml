@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+	<data>
+		<record id="wk_invoice_config_id" model="ir.ui.view">
+			<field name="name">pos.config.conf.form</field>
+			<field name="model">pos.config</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_config_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/group[@name='receipt']" position="before">
+				<separator string="POS Order Sync"/>
+					<group>
+						<field name="quotation_print_type"/>
+					</group>
+				</xpath>
+			</field> 
+		</record>
+  </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="product_Reference_inheritance" inherit_id="website_sale.products_item">
+		<xpath expr="//div[@itemscope='itemscope']/section/h5/strong" position="after">
+			<t t-if="product.default_code" ><br/><br/>
+               <b style="color:red"> Reference:</b><span t-field="product.default_code" style="font-size: 10px;font-style: italic; color:red"/>
+            </t>
+		</xpath>
+	</template>
+</odoo>	
+
+
+
+
+ 

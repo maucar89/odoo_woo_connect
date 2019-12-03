@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="fixer_api_usd" model="currency.rate.api">
+            <field name="uri">https://api.fixer.io/latest</field>
+            <field name="params">{'base':'USD'}</field>
+            <field name="code">json_response =response.json()
+result =[]
+for currency,rate in json_response.get('rates').items():
+  result+=[{currency:rate}]
+
+            </field>
+
+        </record>
+        <record id="fixer_api_eur" model="currency.rate.api">
+            <field name="uri">https://api.fixer.io/latest</field>
+            <field name="params">{'base':'EUR'}</field>
+            <field name="code">json_response =response.json()
+result =[]
+for currency,rate in json_response.get('rates').items():
+  result+=[{currency:rate}]
+
+            </field>
+
+        </record>
+    </data>
+</openerp>

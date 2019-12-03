@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sales_config_inherit" model="ir.ui.view">
+        <field name="name">sale settings</field>
+        <field name="model">sale.config.settings</field>
+        <field name="inherit_id" ref="sale.view_sales_config"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='customers']/field[last()]" position="after">
+                <field name="company_currency_id" invisible="1"/>
+                <field name="default_credit_limit" class="oe_inline" widget="monetary" options="{'currency_field': 'credit_limit_currency_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_draft']" position="attributes">
+                <attribute name="states">cancel,approve</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='action_draft']" position="before">
+                <field name="user_is_manager" invisible="1"/>
+                <button name="action_approve" states="approve" type="object" string="Approve" class="btn-primary"
+                        attrs="{'invisible': ['|', ('user_is_manager','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

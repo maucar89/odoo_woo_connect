@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+	<t t-extend="PaymentScreenWidget">
+		<t t-jquery="div.payment-buttons" t-operation="append">
+		  <t t-if="widget.pos.config.enable_pos_loyalty">
+			<div class='button js_redeem_loyalty'>
+                <i class='fa fa-gift' /> 
+                <span>
+                	Redeem Loyalty
+                </span>
+            </div>
+		  </t>
+		</t>
+	</t>
+
+	<t t-name="RedeemLoyaltyPointsPopup">
+         <div class="modal-dialog">
+            <div class="popup popup-redeem-loyalty">
+            	<p class="title">Redeem Loyalty Points</p>
+            	<t t-if="widget.pos.loyalty_config and widget.pos.get_order().get_client()">
+            		<div class="loyalty_info">
+		            	<table>
+							<colgroup>
+								<col width="50%" />
+							</colgroup>
+		            		<tr>
+		            			<td>Your Total Points: </td>
+		            			<td><t t-esc="widget.pos.get_order().get_client().remaining_loyalty_points.toFixed(2) - widget.pos.get_order().get_loyalty_redeemed_point()" /></td>
+		            		</tr>
+		            		<tr>
+		            			<td> <t t-esc="widget.pos.loyalty_config.points" /> Point = </td>
+		            			<td><t t-esc="widget.format_currency(widget.pos.loyalty_config.to_amount)" /></td>
+		            		</tr>
+		            		<tr>
+		            			<td>Redeem Point: </td>
+		            			<td><input type="text" class="redeem_loyalty_input"/></td>
+		            		</tr>
+		            		<tr>
+		            			<td>Point to Amount: </td>
+		            			<td><span class="point_to_amount"></span></td>
+		            		</tr>
+		            	</table>
+	            	</div>
+            	</t>
+            	<div class="footer">
+            		<div class="button confirm">
+                        Redeem
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+            
+    	 </div>
+    </t>
+
+	<t t-extend="PosTicket">
+		<t t-jquery="[t-if='receipt.footer']" t-operation="before">
+		    <t t-if="widget.pos.config.enable_pos_loyalty and order.get_client()">
+		        <div class="pos-center-align">--------------------------------</div>
+		        <div class="pos-center-align">Loyalty Points</div>
+			    <table>
+			        <t t-if="order.get_client() and order.get_client().total_remaining_points">
+                        <tr>
+                            <td>Your Points:</td>
+                            <td class="pos-right-align">
+                                <t t-esc="order.get_client().total_remaining_points.toFixed(2)"/>
+                            </td>
+                        </tr>
+                    </t>
+					<t t-if="order.get_loyalty_earned_point() and order.get_client()">
+					    <tr>
+			                <td>Earned Points:</td>
+			                <td class="pos-right-align">
+			                    <t t-esc="order.get_loyalty_earned_point()"/>
+			                </td>
+			            </tr>
+		            </t>
+		            <t t-if="order.get_loyalty_redeemed_point() and order.get_client()">
+		                <tr>
+		                    <td>Redeemed Points:</td>
+		                    <td class="pos-right-align">
+		                        <t t-esc="order.get_loyalty_redeemed_point()"/>
+		                    </td>
+		                </tr>
+		            </t>
+		            <t t-if="order.get_client()">
+			            <tr class="emph">
+			                <td>Total Points:</td>
+			                <td class="pos-right-align">
+			                    <t t-esc="order.get_total_loyalty_points()"/>
+			                </td>
+			            </tr>
+		            </t>
+	            </table>
+	            <div class="pos-center-align">--------------------------------</div>
+            </t>
+		</t>
+	</t>
+
+	<t t-extend="XmlReceipt">
+		<t t-jquery=".before-footer" t-operation="before">
+		    <t t-if="widget.pos.config.enable_pos_loyalty">
+			    <div>--------------------------------</div>
+			    <div>Loyalty Points</div>
+				<t t-if="receipt.client_points">
+					<line>
+		                <left><pre>Your Points</pre></left>
+		                <right><value><t t-esc='receipt.client_points' /></value></right>
+		            </line>
+				</t>
+				<t t-if="receipt.earned_points">
+	                <line>
+	                    <left><pre>Earned Points</pre></left>
+	                    <right><value><t t-esc='receipt.earned_points' /></value></right>
+	                </line>
+	            </t>
+	            <t t-if="receipt.redeem_points">
+	                <line>
+	                    <left><pre>Redeemed Points</pre></left>
+	                    <right><value><t t-esc='receipt.redeem_points' /></value></right>
+	                </line>
+	            </t>
+	            <t t-if="receipt.total_points">
+	                <line>
+	                    <left><pre>Total Points</pre></left>
+	                    <right><value><t t-esc='receipt.total_points' /></value></right>
+	                </line>
+	            </t>
+	            <div>--------------------------------</div>
+            </t>
+		</t>
+		
+	</t>
+
+	<t t-extend="OrderWidget">
+		<t t-jquery="div.order-scroller" t-operation="append">
+			<t t-if="orderlines.length > 0">
+				<t t-if="widget.pos and widget.pos.loyalty_config and widget.pos.config.enable_pos_loyalty">
+					<div class="loyalty_info_cart">
+						<span class="label">You Earned <span class="value">0</span> Loyalty Points</span> 
+					</div>
+				</t>
+			</t>
+		</t>
+	</t>
+
+	<t t-name="PaymentScreen-Paymentmethods">
+        <div class='paymentmethods'>
+            <t t-foreach="widget.pos.cashregisters" t-as="cashregister">
+                <div class="button paymentmethod" t-att-data-id="cashregister.journal_id[0]">
+                	<t t-if="cashregister.journal_id[0] != widget.pos.config.loyalty_journal_id[0]">
+                    	<t t-esc="cashregister.journal_id[1]" />
+                    </t>
+                </div>
+            </t>
+        </div>
+    </t>
+	
+    <t t-extend="ClientDetails">
+        <t t-jquery="div.client-details-right" t-operation="append">
+            <t t-if="widget.pos.config.enable_pos_loyalty">
+	            <div class='client-detail'>
+	                <span class='label'>Total loyalty Points</span>
+	                <t t-if='partner.total_remaining_points'>
+	                    <span class='detail client-loyalty'><t t-esc='partner.total_remaining_points'/></span>
+	                </t>
+	                <t t-if='!partner.total_remaining_points'>
+	                    <span class='detail client-loyalty empty'>N/A</span>
+	                </t>
+	            </div>
+            </t>
+        </t>
+    </t>
+</templates>

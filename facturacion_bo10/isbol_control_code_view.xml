@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_invoice_form2" model="ir.ui.view">
+            <field name="name">account.invoice.form.control</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                    <field name="partner_id" position="after">
+                        <field name="nit" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="operador" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="estado_factura" attrs="{'readonly':[('state','!=','draft')]}"/>
+                    </field>
+                    <xpath expr="//page[2]" position="after">
+                        <page string="Facturacion Computarizada">
+                            <group string="Datos de emision" col="4" colspan="4">
+                                <field name="razon" />
+                                <field name="unipersonal" />
+                                <field name="nit_empresa" />
+                                <field name="autorizacion"/>
+                                <field name="code"/>
+                                <!--
+                                <field name="code" attrs="{'readonly':[('state','!=','draft')]}"/>
+
+                                <field name="neto" />
+                                <field name="excento" />
+                                <field name="debito" />
+                                <field name="ice" />
+                                -->
+                                <field name="fecha"/>
+
+                            </group>
+
+                            <group string="Datos de impresion" col="2" colspan="2">
+                                <field name="sucursal"/>
+                                <field name="direccion"/>
+                                <field name="sucursal_2"/>
+                                <field name="direccion_2"/>
+                                <field name="actividad"/>
+                                <field name="leyenda"/>
+                                <field name="leyenda2"/>
+                                <field name="mensaje"/>
+                            </group>
+                        </page>
+                    </xpath>
+            </field>
+        </record>
+<!--
+        <record id="invoice_tree" model="ir.ui.view">
+            <field name="name">account.invoice.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <tree colors="blue:state == 'draft';black:state in ('proforma','proforma2','open');gray:state == 'cancel'" string="Invoice">
+                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="journal_id"/>
+                    <field name="invoice_number" string="Factura"/>
+                    <field name="date_invoice"/>
+                    <field name="partner_id" groups="base.group_user"/>
+                    <field name="name" invisible="1"/>
+                    <field name="date_due" string="Vencimiento"/>
+                    <field name="origin" string="Origen"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="residual" sum="Residual Amount"/>
+                    <field name="amount_total" sum="Total Amount"/>
+                    <field name="state"/>
+                    <field name="type" invisible="context.get('type',True)"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="tko_invoice_cancel_customer_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="internal_number" position="replace"/>
+                <field name="number" position="replace">
+                    <field name="number" invisible="1"/>
+                    <field name="internal_number"/>
+                </field>
+            </field>
+        </record>
+-->
+
+
+<!--REVISAR
+        <record id="tko_invoice_cancel_supplier_form" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="internal_number" position="replace"/>
+                <field name="number" position="replace">
+                    <field name="number" invisible="1"/>
+                    <field name="internal_number"/>
+                </field>
+            </field>
+        </record>
+-->
+        <record id="account_journal_facturacion" model="ir.ui.view">
+            <field name="name">account.journal.form.dosificacion</field>
+            <field name="model">account.journal</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="dosificacion" groups="account.group_account_manager"/>
+                </field>
+                    <xpath expr="//page[2]" position="after">
+                        <page string="Facturacion Computarizada" groups="account.group_account_manager" attrs="{'invisible': [('dosificacion','=', False)]}">
+                            <group string="Datos del Contribuyente "  col="4" colspan="4">
+                                <field name="razon_social" placeholder="Razon Social o Nombre Comercial"/>
+                                <field name="nombre_unipersonal" placeholder="Nombre para empresa Unipersonal EJ: Juan Perez"/>
+                                <field name="nit_contribuyente" placeholder="Nit del contribuyente"/>
+                                <field name="actividad_dosificacion" placeholder="Actividad registrada en la dosificacion"/>
+                                <field name="titulo" placeholder="El titulo de la factura, EJ, FACTURA o RECIBO DE ALQUILER"/>
+                                <field name="subtitulo" placeholder="Subtitulo de la factura EJ, No valido para credito fiscal..."/>
+                            </group>
+                            <group string="Datos de la Casa Matriz / Sucursal"  col="4" colspan="4">
+                                <field name="nombre_sucursal" placeholder="Ejemplo: CASA MATRIZ"/>
+                                <field name="nombre_sucursal_2" placeholder="Ejemplo: SUCURSAL 2"/>
+                                <field name="direccion_sucursal" placeholder="Direccion en la dosificacion para la Casa Matriz"/>
+                                <field name="direccion_sucursal_2" placeholder="Direccion en la dosificacion para la Sucursal"/>
+                            </group>
+                            <group string="Datos de la dosificacion" col="2" colspan="2">
+                                <field name="autorizacion_dosificacion" placeholder="Autorizacon de la dosificacion"/>
+                                <field name="llave_dosificacion" placeholder="llave de la dosificacion"/>
+                                <field name="fecha_limite" placeholder="Fecha limite de emision"/>
+                            </group>
+                            <group string="Datos para la impresion" col="2" colspan="2">
+
+                                <field name="leyenda_dosificacion" placeholder="Leyenda principal"/>
+                                <field name="leyenda_secundaria" placeholder="Leyenda en la dosificacion"/>
+                                <field name="mensaje_factura" placeholder="Mensaje opcional impreso en la factura"/>
+                                <field name="estado_factura" placeholder="estado_factura"/>
+                            </group>
+                        </page>
+                    </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

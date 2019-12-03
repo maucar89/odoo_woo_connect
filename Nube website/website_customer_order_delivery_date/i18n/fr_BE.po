@@ -1,0 +1,59 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* website_customer_order_delivery_date
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-17 04:22+0000\n"
+"PO-Revision-Date: 2015-10-17 04:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_customer_order_delivery_date
+#: view:sale.order:website_customer_order_delivery_date.view_customer_order_delivery_sale_form_view_inherited
+#: view:website.config.settings:website_customer_order_delivery_date.view_config_settings_customer_delivery_inherit
+msgid "Customer Order Delivery Date"
+msgstr "Date de livraison de la commande client"
+
+#. module: website_customer_order_delivery_date
+#: model:ir.model.fields,field_description:website_customer_order_delivery_date.field_sale_order_customer_order_delivery_comment
+#: model:ir.ui.view,arch_db:website_customer_order_delivery_date.website_sale_customer_order_delivery_date
+msgid "Delivery Comment"
+msgstr "Livraison Commentaire"
+
+#. module: website_customer_order_delivery_date
+#: model:ir.model.fields,field_description:website_customer_order_delivery_date.field_sale_order_customer_order_delivery_date
+#: model:ir.ui.view,arch_db:website_customer_order_delivery_date.website_sale_customer_order_delivery_date
+msgid "Delivery Date"
+msgstr "Date de livraison"
+
+#. module: website_customer_order_delivery_date
+#: field:website,is_customer_order_delivery_comment_feature:0
+msgid "Do you want to disable customer order delivery comment feature"
+msgstr "Voulez-vous désactiver la commande du client livraison fonctionnalité de commentaire"
+
+#. module: website_customer_order_delivery_date
+#: field:website,is_customer_order_delivery_date_feature:0
+msgid "Do you want to disable customer order delivery date feature"
+msgstr "Voulez-vous désactiver la fonction commande d'un client de la date de livraison"
+
+#. module: website_customer_order_delivery_date
+#: model:ir.model,name:website_customer_order_delivery_date.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: website_customer_order_delivery_date
+#: model:ir.model,name:website_customer_order_delivery_date.model_website
+msgid "Website"
+msgstr "Site Web"
+
+#. module: website_customer_order_delivery_date
+#: model:ir.ui.view,arch_db:website_customer_order_delivery_date.website_sale_customer_order_delivery_date
+msgid "Write a comment..."
+msgstr "Écrire un commentaire..."

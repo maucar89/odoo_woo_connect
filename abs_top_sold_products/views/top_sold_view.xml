@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <menuitem
+            id="menu_top_sales"
+            name="Top Sales"
+            parent="sales_team.menu_sale_report"
+            sequence="11"
+            action="abs_top_sold_products.open_top_sales_action"/>
+</odoo>

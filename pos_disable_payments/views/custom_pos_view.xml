@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<!-- Add custom js for pos_disable_payments -->
+        <template id="assets_for_pos_disable_payments" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/pos_disable_payments/static/src/js/pos_disable_payments.js"/>
+            </xpath>
+        </template>
+
+
+        	<!-- custom fields in res_users view -->
+			<record id="inherit_view_bi_res_users_form" model="ir.ui.view">
+				<field name="name">inherit_view_res_users_form</field>
+				<field name="model">res.users</field>
+				<field name="inherit_id" ref="point_of_sale.res_users_form_view"/>
+				<field name="arch" type="xml">
+					<xpath expr="//field[@name='pos_security_pin']" position="after">
+                        <field name="is_allow_payments"/>
+                        <field name="is_allow_discount"/>
+                        <field name="is_allow_qty"/>
+                        <field name="is_edit_price"/>
+                        <field name="is_allow_remove_orderline"/>
+                	</xpath>
+				</field>
+			</record>
+
+    </data>
+</odoo>

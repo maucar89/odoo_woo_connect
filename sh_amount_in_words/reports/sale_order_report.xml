@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="sh_amount_in_words_report_quotation_sales" inherit_id="sale.report_saleorder_document">
+ 		<xpath expr="//div[@name='total']" position="after">
+			<span t-if="doc.print_to_report==True">
+	 			<span><strong>Amount : </strong></span> 				
+ 		   	    <span t-field="doc.amount_in_words"/>
+ 			</span>
+		</xpath>
+	</template>	
+</odoo>
+

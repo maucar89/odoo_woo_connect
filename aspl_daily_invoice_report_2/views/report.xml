@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report 
+            id="action_report_daily_invoice"
+            model="daily.invoice"
+            string="Daily Invoice"
+            report_type="qweb-pdf"
+            name="aspl_daily_invoice_report.report_daily_invoice"
+            file="aspl_daily_invoice_report.report_daily_invoice"
+            />
+
+    </data>
+</openerp>

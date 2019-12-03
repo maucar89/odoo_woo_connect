@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--
+    Schedule Date in Picking Slip Report
+-->
+    <template id="report_delivery_document_extend" inherit_id="stock.report_delivery_document">
+        <xpath expr="//td[@name='td_sched_date']" position="replace">
+            <td name="td_sched_date">
+               <span t-field="o.schedule_date"/>
+            </td>
+        </xpath>
+    </template>
+<!--
+    Schedule Date in Picking operations Report
+-->
+    <template id="report_picking_extend" inherit_id="stock.report_picking">
+        <xpath expr="//td[@name='td_sched_date']" position="replace">
+            <td name="td_sched_date">
+               <span t-field="o.schedule_date"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

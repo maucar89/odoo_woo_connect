@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_ir_menu_access_form" model="ir.ui.view">
+            <field name="name">ir.menu.access.form</field>
+            <field name="model">ir.menu.access</field>
+            <field name="arch" type="xml">
+                <form string="Menu Access">
+                    <group col="4" colspan="4">
+                        <separator string="Menus" col="4" colspan="4"/>
+                        <field name="menu_ids" options="{'no_create': True}"
+                               nolabel="1" col="4" colspan="4"/>
+                        <separator string="Groups" col="4" colspan="4"/>
+                        <field name="group_ids" options="{'no_create': True}"
+                               nolabel="1" col="4" colspan="4"/>
+                        <separator string="Users" col="4" colspan="4"/>
+                        <field name="user_ids" options="{'no_create': True}"
+                               nolabel="1" col="4" colspan="4"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ir_menu_access_tree" model="ir.ui.view">
+            <field name="name">ir.menu.access.tree</field>
+            <field name="model">ir.menu.access</field>
+            <field name="arch" type="xml">
+                <tree string="Menu Access">
+                    <field name="menu_ids"/>
+                    <field name="group_ids"/>
+                    <field name="user_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_ir_menu_access" model="ir.actions.act_window">
+            <field name="name">Menu Access Security</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ir.menu.access</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_ir_menu_access" parent="base.menu_security"
+                  action="action_ir_menu_access"/>
+
+    </data>
+</odoo>

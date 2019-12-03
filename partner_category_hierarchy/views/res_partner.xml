@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="hcategory_id" placeholder="Category" attrs="{'invisible': [('parent_id', '!=', False)]}"/>
+            </field>
+            <xpath expr="//group/group" position="before">
+                <group colspan="4">
+                    <div attrs="{'invisible': [('parent_id', '=', False)]}">
+                        <span>Partner category settings are managed on <button name="open_commercial_entity" type="object" string="the parent company" class="oe_link"/></span>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <field name="hcategory_id"/>
+            </search>
+            <group name="group_by" position="inside">
+                <filter string="Category" domain="[('parent_id', '=', False)]" context="{'group_by': 'hcategory_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>

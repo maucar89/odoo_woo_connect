@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="dusal_pricing" inherit_id="website_quote.pricing">
+    <xpath expr="//section[@id='quote']/t/table[@class='table wq-table'] | //section[@id='quote']/t/table" position="before">
+        <t t-set="number" t-value="0"/>
+    </xpath>
+    <xpath expr="//section[@id='quote']/t/table[@class='table wq-table']/thead/tr/th[1]" position="before">
+        <th t-if="quotation.print_line_number"><strong>No.</strong></th>
+        <th t-if="quotation.print_product_image"><strong>Image</strong></th>
+    </xpath>
+    <xpath expr="//section[@id='quote']/t/table[@class='table wq-table']/tbody/t/t[@t-as='line']/tr/td[1]" position="before">
+        <td t-if="quotation.print_line_number">
+            <t t-set="number" t-value="number+1"/>
+            <span t-esc="number"/>
+        </td>
+        <td t-if="quotation.print_product_image">
+            <span t-if="quotation.image_size == 'small'"><img t-if="line.product_image_small" t-att-src="'data:image/png;base64,%s' % line.product_image_small" style="width: unset; max-width: 100%;"/></span>
+            <span t-if="quotation.image_size == 'medium'"><img t-if="line.product_image_medium" t-att-src="'data:image/png;base64,%s' % line.product_image_medium" style="width: unset; max-width: 100%;"/></span>
+            <span t-if="quotation.image_size == 'big'"><img t-if="line.product_image" t-att-src="'data:image/png;base64,%s' % line.product_image" style="width: unset; max-width: 100%;"/></span>
+            
+        </td>
+    </xpath>
+  </template>
+</odoo>

@@ -1,0 +1,24 @@
+.loyalty_info_cart{
+	bottom: 5px;
+	width: 99%;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #7F82AC;
+}
+.popup-redeem-loyalty{
+	height: 305px !important;
+}
+.loyalty_info table{
+	width: 100%;
+	font-size: 15px
+}
+.loyalty_info table tr td{
+	padding: 10px;
+}
+.loyalty_info table tr td:first-child{
+	text-align: right;
+}
+.loyalty_info table tr td:last-child{
+	text-align: left;
+}
