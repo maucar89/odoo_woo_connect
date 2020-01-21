@@ -1,0 +1,128 @@
+@font-white: #FFF;
+@color-primary: #39434B;
+
+// Font Mixins
+
+.script-font() {
+  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+.heading-font() {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+// Background Cover Mixin
+
+.background-cover() {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+//Show editingbar of odoo
+#oe_main_menu_navbar {
+    z-index: 10000;
+}
+
+//Hide header menu when editing
+body.editor_enable .navbar-custom {
+    z-index: -1;
+}
+
+
+// Custom Navigation Bar
+
+.navbar-custom {
+    background-color: white;
+    border-color: transparent;
+    .navbar-brand {
+        color: @color-primary;
+        //.script-font;
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            color: darken(@color-primary, 10%);
+        }
+    }
+    .navbar-collapse {
+        border-color: fade(white, 2%);
+    }
+    .navbar-toggle {
+        background-color: @color-primary;
+        border-color: @color-primary;
+        .heading-font;
+        color: white;
+        font-size: 12px;
+        &:hover,
+        &:focus {
+            background-color: @color-primary;
+        }
+    }
+    .nav {
+        li {
+            a {
+                //.heading-font;
+                font-weight: 400;
+                letter-spacing: 1px;
+                color: @color-primary;
+                &:hover,
+                &:focus {
+                    color: @color-primary;
+                    outline: none;
+                    background-color: #1EBECD;
+                }
+            }
+            .active>a {
+                background-color: #1EBECD;
+            }
+        }
+    }
+    .navbar-nav>.active>a {
+        border-radius: 0;
+        color: white;
+        background-color: #1EBECD;
+    }
+    .navbar-nav>.active>a:hover,
+    .navbar-nav>.active>a:focus {
+        color: white;
+        background-color: darken(@color-primary, 10%);
+    }
+    .navbar-nav>.open>a:focus {
+        background-color: #1EBECD;
+    }
+}
+
+@media(min-width:768px) {
+    .navbar-custom {
+        background-color: transparent;
+        padding: 25px 0;
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+        border: none;
+        .navbar-brand {
+            font-size: 2em;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        .navbar-nav>.active>a {
+            border-radius: 3px;
+        }
+    }
+}
+
+// Navbar Change on Scroll
+
+@media(min-width:768px) {
+    .navbar-custom.affix {
+        background-color: white;
+        padding: 10px 0;
+        .navbar-brand {
+            font-size: 1.5em;
+        }
+    }
+}

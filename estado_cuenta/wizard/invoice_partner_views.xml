@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <record id="view_dev_invoice_partner_report_form" model="ir.ui.view">
+        <field name="name">view.dev.invoice.partner.report.form</field>
+        <field name="model">invoice.partner.report</field>
+        <field name="arch" type="xml">
+        <form string="Reporte de Estado de Cuenta de Clientes">
+            <group>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="filter_by"/>
+                </group>
+                <group>
+                    <field name="state"/>
+                    <field name="inv_type"/>
+                    <field name="category_ids" attrs="{'invisible':[('filter_by','!=','partner_category')],
+                                                       'required':[('filter_by','=','partner_category')]}" widget="many2many_tags"/>
+                </group>
+            </group>
+            <separator string="Clientes" attrs="{'invisible':[('filter_by','!=','partner')]}"/>
+            <field name="partner_ids" attrs="{'invisible':[('filter_by','!=','partner')]}" />
+            <separator string="Asesores" attrs="{'invisible':[('filter_by','!=','comercial_user')]}"/>
+            <field name="user_ids" attrs="{'invisible':[('filter_by','!=','comercial_user')]}" />
+
+            <footer>
+    	 		<button name="generate_excel" string="Reporte Excel" type="object" class="oe_highlight"/>
+	        	   or
+            	<button string="Cancelar" class="oe_link" special="cancel" />
+            </footer>
+        </form>
+        </field>
+    </record>
+     <record id="action_invoice_partner_category_report" model="ir.actions.act_window">
+        <field name="name">Reporte de Estado de Cuenta Cliente</field>
+        <field name="res_model">invoice.partner.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dev_invoice_partner_report_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_invoice_partner_category" name="Estado de Cuenta Excel" parent="account.menu_finance_reports" sequence="1" action="action_invoice_partner_category_report"/>
+
+
+</odoo>
