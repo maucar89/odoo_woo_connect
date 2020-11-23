@@ -1,0 +1,366 @@
+<!-- New code starts -->
+
+<!DOCTYPE html>
+<html>
+
+
+<head >
+	<title>
+		Documentation
+	</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+	<style type="text/css" rel="stylesheet">
+		/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(https://fonts.gstatic.com/s/lato/v11/eFRpvGLEW31oiexbYNx7Y_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(https://fonts.gstatic.com/s/lato/v11/GtRkRNTnri0g82CjKnEB0Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v11/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v11/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body{
+	font-family: 'Lato', "Open Sans", "Helvetica","Sans";
+	font-weight: 300;
+}
+
+.oe_spaced h2, .oe_spaced h3{
+	font-family: 'Lato', "Open Sans", "Helvetica","Sans";
+	font-weight: 300;
+}
+
+.content-font-size p{
+	font-size: 19px;
+
+}
+
+
+.content-font-size li{
+	font-size: 17px;
+	text-align: justify;
+}
+
+
+.img-border{
+	border:1px solid;
+}
+
+
+/*ul.list2 {
+    list-style: disc !important;
+}
+
+.content-middle ul{
+	list-style: none;
+	text-align: left;
+}
+*/
+/*.content-middle:nth-child(1){
+	padding:4px 0 40px 20px !important;
+}*/
+/*
+.row:nth-child(even) {
+    background-color:rgba(221, 221, 221, 0.66);
+}*/
+
+.row-heading{
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.row-heading h1{
+	text-align: center;
+	padding: 20px;
+	font-size:40px;
+	font-family: 'Lato', "Open Sans", "Helvetica","Sans";
+	font-weight: 300;
+}
+ul.list {
+    padding: 30px 15px;
+}
+@media only screen and (min-width: 1380px){
+ul.list{
+	    padding-left: 50px;
+}
+.content-middle{
+padding:72px 0 40px 20px;
+text-align: center;
+}
+
+
+}
+	</style>
+</head>
+<body>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="text-align: center;">Odoo Woocommerce Connect</h2>
+            <h3 class="oe_slogan" style="text-align: center;"><b>Manage your WooCommerce in <span style="color:blue">Real Time</span> and <span style="color:blue">Bi-directional</span> data exchange between WooCommerce store and Odoo.</b></h3>
+    </div>
+</div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Features</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                <h3> Module Provides Following Features:</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-check text-primary"></i> Export Product Tags</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Product Attributes</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Product Categories</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Products</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Product Coupons</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Customers</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Taxes</li>
+                    <li><i class="fa fa-check text-primary"></i> Export Sales Orders</li>
+                </ul>
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="features.png">
+            </div>
+        </div>
+        <div class="oe_span12">
+	        <p>
+	        	Note: This module will work only if WooCommerce Plugin by WooThemes, WooCommerce Rest API Extention Plugin By TechSpawn, WordPress to odoo connector Plugin By TechSpawn are installed at wordpress site (which are provided with the module).
+	        </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Product Bi-directionally</h2>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="product.png">
+            </div>
+        </div>
+
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                <h3> Product:</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-check text-primary"></i> Publish Status i.e. Pending Review, Draft and Publish</li>
+					<li><i class="fa fa-check text-primary"></i> Name </li>
+					<li><i class="fa fa-check text-primary"></i> Status </li>
+					<li><i class="fa fa-check text-primary"></i> SKU </li>
+					<li><i class="fa fa-check text-primary"></i> Weight </li>
+					<li><i class="fa fa-check text-primary"></i> Stock Quantity </li>
+					<li><i class="fa fa-check text-primary"></i> Short Description </li>
+					<li><i class="fa fa-check text-primary"></i> Description </li>
+					<li><i class="fa fa-check text-primary"></i> Categories </li>
+					<li><i class="fa fa-check text-primary"></i> Attributes </li>
+					<li><i class="fa fa-check text-primary"></i> Tags </li>
+					<li><i class="fa fa-check text-primary"></i> Dimensions i.e. length, width and height</li>
+					<li><i class="fa fa-check text-primary"></i> Regular Price </li>
+					<li><i class="fa fa-check text-primary"></i> Sale Price </li>
+					<li><i class="fa fa-check text-primary"></i> Images i.e. Featured as well as Multiple Gallery Images </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                <h3> Product Variations :</h3>
+                <ul class="list-unstyled">
+
+					<li><i class="fa fa-check text-primary"></i> Name </li>
+					<li><i class="fa fa-check text-primary"></i> Variation </li>
+					<li><i class="fa fa-check text-primary"></i> SKU </li>
+					<li><i class="fa fa-check text-primary"></i> Weight </li>
+					<li><i class="fa fa-check text-primary"></i> Stock Quantity </li>
+					<li><i class="fa fa-check text-primary"></i> Variation Image </li>
+					<li><i class="fa fa-check text-primary"></i> Dimensions i.e. length, width and height</li>
+					<li><i class="fa fa-check text-primary"></i> Managing Stock </li>
+					<li><i class="fa fa-check text-primary"></i> Regular Price </li>
+					<li><i class="fa fa-check text-primary"></i> Sale Price </li>
+                </ul>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Attributes <br>And<br> Attribute Values Bi-directionally</h2>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="attribute.png">
+            </div>
+        </div>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="attribute_value.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Categories Bi-directionally</h2>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="categories.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Product Tags Bi-directionally</h2>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="tags.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Customers Bi-directionally</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                <ul class="list-unstyled">
+					<li> <i class="fa fa-check text-primary"></i> Customer Email </li>
+					<li> <i class="fa fa-check text-primary"></i> First Name </li>
+					<li> <i class="fa fa-check text-primary"></i> Last Name </li>
+					<li> <i class="fa fa-check text-primary"></i> Username </li>
+					<li> <i class="fa fa-check text-primary"></i> Password </li>
+					<li> <i class="fa fa-check text-primary"></i> Company </li>
+					<li> <i class="fa fa-check text-primary"></i> Billing Address </li>
+					<li> <i class="fa fa-check text-primary"></i> Shipping Shipping </li>
+                </ul>
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="customers.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Synchronize Sales Order Bi-directionally</h2>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="sales_order.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Backend Setup And Configure</h2>
+        <h3 class="oe_slogan" style="text-align: center;">Add Multiple Wordpress Sites</h3>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="backend.png">
+            </div>
+        </div>
+        <div class="oe_span12">
+            <p class="oe_mt32">
+                <h3> Steps To Add Backend:</h3>
+            	<ul class="list-unstyled">
+                    <li>Step 1: Go to wordpress site and install following plug-ins: </li>
+                    	<ul class="list-styled">
+                    		<li>WooCommerce Plugin by WooThemes</li>
+                    		<li>WooCommerce Rest API Extension Plugin By TechSpawn</li>
+                    		<li>WordPress to odoo connector Plugin By TechSpawn</li>
+                    	</ul>
+                    <li>Step 2: After installing WooCommerce at Wordpress Site,
+                    			go to WooCommerce Menu -> Settings -> API -> Keys/Apps
+                    			then click on Add Key (Note: Permissions are Read/Write)</li>
+                    <li>Step 3: Copy generated Consumer Key and Consumer Secret</li>
+                    <li>Step 4: Go to odoo site and Install Odoo Woo Connect</li>
+                    <li>Step 4: Open ODOO WOO Connect -> WP Site -> Create and then paste the Consumer Key and Consumer Secret</li>
+                    <li>Step 5: Check Connection </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan"><b>Contact / Support</b></h2>
+            <h3 class="oe_slogan">Expert Ideas and ERP Solution To Help You Grow</h3>
+        </div>
+        <div class="oe_span4">
+            <div class="oe_picture" style="padding-top: 10%" ;>
+                <a href="http://www.techspawn.com/"><img src="techspawn-logo.png">
+                </a>
+                <a href="http://www.techspawn.com/" style="color: #6D57E0">www.techspawn.com</a>
+            </div>
+        </div>
+        <div class="oe_span8">
+            <p class="oe_mt32" style="text-align: justify;">
+                Get Expert Help and assistance related to the new Odoo feature, And All ERP Related solutions at one place. We offer Solutions regardless the size of a business, Contact us through e-mail at <a href="mailto:sales@techspawn.com">sales@techspawn.com</a> And Get Professional help that you want to build your business better.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Free Support</h2>
+            <h3 class="oe_slogan">You will get 15 Days free support incase any bugs or support while installing and testing the module.</h3>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+

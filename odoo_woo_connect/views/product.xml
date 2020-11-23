@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="wp_odoo_product_template_form_view" model="ir.ui.view">
+            <field name="name">product.normal.woo.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button name="sync_product" string="Sync" type="object" class="oe_highlight"/>
+                </header>
+                <xpath expr="//field[@name='list_price']" position="replace">
+                    <field name="backend_id" widget="many2many_tags" required="1"/>
+                    <field name='tag_ids' widget="many2many_tags"/>
+<!--                    <field name="regular_price" on_change="wp_price_check(regular_price,sale_price)"/>-->
+<!--                    <field name="sale_price" on_change="wp_price_check(regular_price,sale_price)"/>-->
+                    <field name="regular_price"/>
+                    <field name="sale_price"/>
+
+                    <field name="list_price" />
+                </xpath>
+                <xpath expr="//page[@name='general_information']/group" position="after">
+                    <group>
+                        <field name="description"/>
+                        <field name="short_description"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//page[@name='general_information']" position="after">
+                    <page string="Wordpress">
+<!--                        <group>-->
+<!--                            <group name="classification_categories" string="WP Categories">-->
+<!--                                <field name="categ_ids" nolabel="1" colspan="2" widget="many2many_tags" domain="[('backend_id','!=',None)]">-->
+<!--                                    <tree string="categ_ids">-->
+<!--                                        <field name="name" />-->
+<!--                                        <field name="backend_id" />-->
+<!--                                        <field name="parent_id" />-->
+<!--                                    </tree>-->
+<!--                                </field>-->
+<!--                            </group>-->
+<!--                        </group>-->
+                        <group>
+                            <group string="Dimensions" attrs="{'invisible':[('type','=','service')]}">
+<!--                                <field name="dimention_unit" />-->
+                                <field name="website_size_x" />
+                                <field name="website_size_y" />
+                                <field name="website_size_z" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="wp_odoo_product_category_form_view" model="ir.ui.view">
+            <field name="name">product.category.woo.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view" />
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="sync_category" string="Sync" type="object" class="oe_highlight"/>
+                    </header>
+                </xpath>
+                <xpath expr="//sheet/div" position="before">
+                    <field name="image" widget='image' class="oe_avatar oe_right"/>
+                </xpath>
+                <xpath expr="//group" position="before">
+                    <group>
+                        <group name="backend" col="2">
+                            <field name="backend_id" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="slug"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="wp_odoo_product_attr_tree_view" model="ir.ui.view">
+            <field name="name">product.attribute.woo.tree</field>
+            <field name="model">product.attribute</field>
+            <field name="inherit_id" ref="product.attribute_tree_view" />
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='sequence']" position="after">-->
+<!--                    <button name="sync_attribute" string="Sync" type="object" class="oe_highlight"/>-->
+<!--                </xpath>-->
+                <xpath expr="//field[@name='create_variant']" position="replace">
+                    <field name="backend_id" widget="many2many_tags"/>
+                    <field name="create_variant"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="wp_odoo_product_attr_form_view" model="ir.ui.view">
+            <field name="name">product.attribute.woo.form</field>
+            <field name="model">product.attribute</field>
+            <field name="inherit_id" ref="product.product_attribute_view_form"/>
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <button name="sync_attribute" string="Sync" type="object" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//field[@name='create_variant']" position="after">
+                    <field name="backend_id" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+
+<!--        <record id="view_product_image_kanban" model="ir.ui.view">-->
+<!--            <field name="name">ViewProductImageKanban</field>-->
+<!--            <field name="model">product.multi.image</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <kanban>-->
+<!--                    <field name="image"/>-->
+<!--                    <field name="product_id"/>-->
+<!--                    <field name="sequence"/>-->
+<!--                    <field name="name"/>-->
+<!--                    <templates>-->
+<!--                        <t t-name="kanban-box">-->
+<!--                            <div class="oe_kanban_vignette oe_semantic_html_override">-->
+<!--                                <a type="open"><img t-att-src="kanban_image('product.multi.image', 'image', record.id.value)" class="oe_kanban_image"/></a>-->
+<!--                                <div class="oe_kanban_details">-->
+<!--                                    <h4>-->
+<!--                                        <a type="open">-->
+<!--                                            <t t-if="record.name.value">-->
+<!--                                                <field name="name"/>-->
+<!--                                            </t>-->
+<!--                                            <p/>-->
+<!--                                            <t t-if="record.sequence.value">-->
+<!--                                                [<field name="sequence"/>]-->
+<!--                                            </t>-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </templates>-->
+<!--                </kanban>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="view_product_image_form" model="ir.ui.view">-->
+<!--            <field name="name">ViewProductImageForm</field>-->
+<!--            <field name="model">product.multi.image</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Product Image" version="7.0">-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="image" colspan="2"/>-->
+<!--                            <field name="product_id" colspan="2"/>-->
+<!--                            <field name="sequence" colspan="2"/>-->
+<!--                            <field name="name" colspan="2"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="view_product_image_tree" model="ir.ui.view">-->
+<!--            <field name="name">ViewProductImageTree</field>-->
+<!--            <field name="model">product.multi.image</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Product Images">-->
+<!--                    <field name="sequence"/>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="product_id"/>-->
+<!--                    <field name="image"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="view_product_form_inherit_product_image" model="ir.ui.view">-->
+<!--            <field name="name">ViewProductFormInheritProductImage</field>-->
+<!--            <field name="model">product.product</field>-->
+<!--            <field name="inherit_id" ref="product.product_normal_form_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//notebook" position="inside">-->
+<!--                    <page string="Images">-->
+<!--                        <field name="image_ids" mode="kanban" nolabel="1">-->
+<!--                            <kanban>-->
+<!--                                <field name="id" invisible="1"/>-->
+<!--                                <field name="image" widget="image"/>-->
+<!--                                <field name="sequence"/>-->
+<!--                                <field name="name"/>-->
+<!--                                <templates>-->
+<!--                                    <t t-name="kanban-box">-->
+<!--                                        <div class="oe_kanban_vignette oe_semantic_html_override">-->
+<!--                                            <a type="open"><img t-att-src="kanban_image('product.multi.image', 'image', record.id.value)" class="oe_kanban_image"/></a>-->
+<!--                                            <div class="oe_kanban_details">-->
+<!--                                                <h4>-->
+<!--                                                    <a type="open">-->
+<!--                                                        <t t-if="record.name.value">-->
+<!--                                                            <field name="name"/>-->
+<!--                                                        </t>-->
+<!--                                                        <p/>-->
+<!--                                                        <t t-if="record.sequence.value">-->
+<!--                                                            <field name="sequence"/>-->
+<!--                                                        </t>-->
+<!--                                                    </a>-->
+<!--                                                </h4>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </t>-->
+<!--                                </templates>-->
+<!--                            </kanban>-->
+<!--                            <tree string="Product Images">-->
+<!--                                <field name="id" invisible="1"/>-->
+<!--                                <field name="sequence"/>-->
+<!--                                <field name="name"/>-->
+<!--                                <field name="image"/>-->
+<!--                            </tree>-->
+<!--                            <form string="Product Image" version="7.0">-->
+<!--                                <group>-->
+<!--                                <field name="id" invisible="1"/>-->
+<!--                                <field name="sequence"/>-->
+<!--                                <field name="name"/>-->
+<!--                                <field name="image"/>-->
+<!--                                </group>-->
+<!--                            </form>-->
+<!--                        </field>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+<!--        <record id="product_template_only_form_view_inh" model="ir.ui.view">-->
+<!--            <field name="name">product.template.product.form.inh</field>-->
+<!--            <field name="model">product.template</field>-->
+<!--            <field name="priority" eval="900" />-->
+<!--            <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//page[@name='variants']" position="after">-->
+<!--                    <page name="images" string="Photos">-->
+<!--                        <field name="image_ids" mode="kanban" nolabel="1">-->
+<!--                            <kanban>-->
+<!--                                <field name='id' invisible="1"/>-->
+<!--                                <field name="image" wiget="image"/>-->
+<!--                                <field name="sequence"/>-->
+<!--                                <field name="name"/>-->
+<!--                                <templates>-->
+<!--                                    <t t-name="kanban-box">-->
+<!--                                        <div class="oe_kanban_vignette oe_semantic_html_override">-->
+<!--                                            <a type="open"><img t-att-src="kanban_image('product.multi.image', 'image', record.id.value)" class="oe_kanban_image"/></a>-->
+<!--                                            <div class="oe_kanban_details">-->
+<!--                                                <h4>-->
+<!--                                                    <a type="open">-->
+<!--                                                        <t t-if="record.name.value">-->
+<!--                                                            <field name="name"/>-->
+<!--                                                        </t>-->
+<!--                                                        <p/>-->
+<!--                                                        <t t-if="record.sequence.value">-->
+<!--                                                            <field name="sequence"/>-->
+<!--                                                        </t>-->
+<!--                                                    </a>-->
+<!--                                                </h4>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </t>-->
+<!--                                </templates>-->
+<!--                            </kanban>-->
+<!--                            <tree string="Product Images">-->
+<!--                                <field name="id" invisible="1"/>-->
+<!--                                <field name="sequence"/>-->
+<!--                                <field name="name"/>-->
+<!--                                <field name="image"/>-->
+<!--                            </tree>-->
+<!--                            <form string="Product Image" version="7.0">-->
+<!--                                <group>-->
+<!--                                    <field name="id" invisible="1"/>-->
+<!--                                    <field name="sequence"/>-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="image"/>-->
+<!--                                </group>-->
+<!--                            </form>-->
+<!--                        </field>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+    </data>
+</odoo>
